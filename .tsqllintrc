@@ -1,0 +1,36 @@
+{
+  "rules": {
+    "case-sensitive-variables": "error",
+    "conditional-begin-end": "error",
+    "count-star": "off",
+    "cross-database-transaction": "error",
+    "data-compression": "off",
+    "data-type-length": "error",
+    "delete-where": "error",
+    "disallow-cursors": "error",
+    "full-text": "off",
+    "information-schema": "error",
+    "keyword-capitalization": "error",
+    "linked-server": "error",
+    "multi-table-alias": "error",
+    "named-constraint": "error",
+    "non-sargable": "error",
+    "object-property": "error",
+    "print-statement": "off",
+    "schema-qualify": "error",
+    "select-star": "error",
+    "semicolon-termination": "error",
+    "set-ansi": "off",
+    "set-nocount": "off",
+    "set-quoted-identifier": "off",
+    "set-transaction-isolation-level": "off",
+    "set-variable": "off",
+    "update-where": "error",
+    "upper-lower": "error",
+    "unicode-string": "error"
+  },
+  "compatability-level": 140,
+  "plugins": {
+    "sample-plugin":".github/tsqllint/tsqllint-plugins.dll"
+  }
+}
