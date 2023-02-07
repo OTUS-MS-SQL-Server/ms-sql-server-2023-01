@@ -8,15 +8,17 @@ UNION
 SELECT 'c' AS Col3;
 GO
 
-
-SELECT Col1, Col2
-FROM (VALUES('a', 2), ('b', 4), ('c', 1)) AS tbl (Col1, Col2);
+-- Другой вариант 
+SELECT Col1
+FROM (VALUES('a'), ('b'), ('c')) AS tbl (Col1);
 GO
 
 -- Будет ли разница в производительности между этими вариантами?
 
-
-
+-- Несколько колонок
+SELECT Col1, Col2
+FROM (VALUES('a', 2), ('b', 4), ('c', 1)) AS tbl (Col1, Col2);
+GO
 
 -- Что быстрее UNION или UNION ALL?
 SELECT 'a'
@@ -37,5 +39,5 @@ GO
 
 SELECT 'a'
 UNION 
-SELECT CAST(123 AS NCHAR(1));
+SELECT CAST(123 AS NCHAR(3));
 GO

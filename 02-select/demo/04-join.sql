@@ -55,7 +55,7 @@ SELECT
   t.TransactionDate,
   t.TransactionAmount
 FROM dbo.Suppliers s, dbo.SupplierTransactions t
-WHERE s.SupplierID = t.SupplierID -- <====== условие JOIN
+WHERE s.SupplierID = t.SupplierID -- <====== условие соединения
 ORDER BY s.SupplierID, t.SupplierID;
 
 -- CROSS JOIN, ANSI SQL-92
@@ -159,6 +159,7 @@ JOIN Sales.Customers c ON c.CustomerID = o.CustomerID
 JOIN Sales.OrderLines l ON l.OrderID  = o.OrderID;
 
 -- Теперь порядок JOIN не влияет
+-- Первоначальный вариант:
 SELECT TOP 10
     o.CustomerID,
     c.CustomerName,
@@ -170,7 +171,7 @@ JOIN Sales.Customers c ON c.CustomerID = o.CustomerID;
 -- Будет ли разница в производительности этих запросов?
 -- Смотрим планы запросов
 
--- Все те же запросы с FORCE JOIN
+-- Те же запросы с FORCE JOIN - фиксируем порядок выполнения JOIN
 -- (смотрим планы)
 SELECT TOP 10
     o.CustomerID,
@@ -208,7 +209,8 @@ SELECT
   s.SupplierName,
   t.SupplierTransactionID,
   t.TransactionDate,
-  t.TransactionAmount
+  t.TransactionAmount,
+  t.TransactionTypeID
 FROM dbo.Suppliers s
 LEFT JOIN dbo.SupplierTransactions t ON t.SupplierID = s.SupplierID
 ORDER BY s.SupplierID;
@@ -218,6 +220,9 @@ SELECT
   s.SupplierID,
   s.SupplierName,
   t.SupplierTransactionID,
+  t.TransactionDate,
+  t.TransactionAmount,
+  t.TransactionTypeID,
   tt.TransactionTypeName
 FROM dbo.Suppliers s
 LEFT JOIN dbo.SupplierTransactions t ON t.SupplierID = s.SupplierID
@@ -240,6 +245,9 @@ SELECT
   s.SupplierID,
   s.SupplierName,
   t.SupplierTransactionID,
+  t.TransactionDate,
+  t.TransactionAmount,
+  t.TransactionTypeID,
   tt.TransactionTypeName
 FROM dbo.Suppliers s
 LEFT JOIN dbo.SupplierTransactions t ON t.SupplierID = s.SupplierID
