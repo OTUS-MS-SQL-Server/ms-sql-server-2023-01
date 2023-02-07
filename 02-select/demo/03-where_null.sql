@@ -72,7 +72,7 @@ FROM Warehouse.StockItems
 WHERE
     (RecommendedRetailPrice BETWEEN 350 AND 500) 
     AND (StockItemName LIKE 'USB%' 
-    OR StockItemName LIKE 'Ride%');
+         OR StockItemName LIKE 'Ride%');
 
 -- --------------------------
 -- Функции в WHERE
@@ -96,7 +96,7 @@ FROM Sales.OrderLines
 WHERE (Quantity * UnitPrice) > 1000;
 
 -- --------------------------
--- DATES
+-- Даты
 -- --------------------------
 
 -- Назовите дату, которая указана в запросе?
@@ -155,6 +155,19 @@ SELECT @@language;
 -- доступные языки
 SELECT * FROM sys.syslanguages;
 
+-- изменить язык для сеанса
+
+SET LANGUAGE Russian;
+SELECT *
+FROM [Sales].[Orders]
+WHERE OrderDate = '02.05.2016' -- пятое февраля
+ORDER BY OrderDate;
+
+SET LANGUAGE English;
+SELECT *
+FROM [Sales].[Orders]
+WHERE OrderDate = '02.05.2016' -- второе мая
+ORDER BY OrderDate;
 
 -- --------------------------
 -- Функции с DATE, CONVERT
@@ -185,10 +198,10 @@ FROM Sales.Orders AS o;
 -- Справка DATEADD  https://docs.microsoft.com/ru-ru/sql/t-sql/functions/dateadd-transact-sql
 
 -- Years
-SELECT DATEDIFF (yy,'2007-01-01', '2008-01-01') AS 'YearDiff';
+SELECT DATEDIFF (yy,'2007-12-31', '2008-01-03') AS 'YearDiff';
 
 -- Days
-SELECT DATEDIFF (dd,'2007-01-01', '2008-01-01') AS 'DayDiff';
+SELECT DATEDIFF (dd,'2007-12-31', '2008-01-03') AS 'DayDiff';
 
 -- Months
 SELECT o.OrderID,
@@ -252,7 +265,8 @@ SELECT 'abc' + NULL;
 SET CONCAT_NULL_YIELDS_NULL OFF;
     SELECT 'abc' + NULL;
 SET CONCAT_NULL_YIELDS_NULL ON;
--- По умолчанию CONCAT_NULL_YIELDS_NULL = ON, в будущих версиях OFF будет вызывать ошибку
+-- По умолчанию CONCAT_NULL_YIELDS_NULL = ON, 
+-- в будущих версиях OFF будет вызывать ошибку
 
 
 -- Арифметические операции с NULL
@@ -314,4 +328,3 @@ DECLARE @val3 INT = 2;
 DECLARE @val4 INT = 5;
 
 SELECT COALESCE(@val1, @val2, @val3, @val4);
-

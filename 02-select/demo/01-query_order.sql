@@ -15,3 +15,11 @@ SELECT OrderLineID AS [Order Line ID],
        (Quantity * UnitPrice) AS [TotalCost]
 FROM Sales.OrderLines
 ORDER BY [TotalCost];
+
+-- Порядок выполнения SELECT: 
+--  FROM
+--  WHERE
+--  GROUP BY
+--  HAVING
+--  SELECT
+--  ORDER BY

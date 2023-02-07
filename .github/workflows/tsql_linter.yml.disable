@@ -25,14 +25,4 @@ jobs:
       - name: "Run TSQLLint"
         run: | 
           tsqllint --config .tsqllintrc \
-            02-select/**/*.sql \
-            03-union_group_by/**/*.sql \
-            04-plans_indexes/demo/*.sql \
-            10-xml_json/**/*.sql \
-            16-indexes/demo/*.sql \
-            18-transactions/demo/*.sql \
-            20-handle_errors/demo/tsql/*.sql \
-            22-clr/demo/**/*.sql \
-            22-clr/demo/**/**/*.sql \
-            24-in_memory_oltp/**/*.sql \
-            28-index_maintenance/**/*.sql
+            02-select/**/*.sql
