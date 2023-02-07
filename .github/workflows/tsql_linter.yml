@@ -1,0 +1,28 @@
+name: tsql_linter
+
+on: push
+
+jobs:
+  build:
+    name: Check code with TSQL Linter
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: "Checkout source code"
+        uses: actions/checkout@v3
+
+      - name: "Setup .NET"
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+
+      - name: "dotnet --version"
+        run: dotnet --version
+
+      - name: "Install TSQLLint"
+        run: dotnet tool install --global TSQLLint
+
+      - name: "Run TSQLLint"
+        run: | 
+          tsqllint --config .tsqllintrc \
+            02-select/**/*.sql
