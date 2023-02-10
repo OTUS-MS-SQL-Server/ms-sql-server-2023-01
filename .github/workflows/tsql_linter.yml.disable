@@ -25,4 +25,5 @@ jobs:
       - name: "Run TSQLLint"
         run: | 
           tsqllint --config .tsqllintrc \
-            02-select/**/*.sql
+            02-select/**/*.sql \
+            03-union_group_by/**/*.sql
