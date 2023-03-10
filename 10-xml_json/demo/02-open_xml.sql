@@ -13,7 +13,7 @@ DECLARE @xmlDocument XML;
 -- !!! измените путь к XML-файлу
 SELECT @xmlDocument = BulkColumn
 FROM OPENROWSET
-(BULK 'Z:\2022-02\11-xml_json_hw\examples\02-open_xml.xml', 
+(BULK 'Z:\otus\ms-sql-server-2023-01\10-xml_json\demo\02-open_xml.xml', 
  SINGLE_CLOB)
 AS data;
 

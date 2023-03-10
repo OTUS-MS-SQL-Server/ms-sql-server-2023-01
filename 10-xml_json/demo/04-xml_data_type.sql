@@ -117,7 +117,7 @@ USE WideWorldImporters;
 DECLARE @x XML;
 SET @x = ( 
   SELECT * FROM OPENROWSET
-  (BULK 'Z:\2021-03\08-xml_json_hw\examples\04-xml_data_type.xml',
+  (BULK 'Z:\otus\ms-sql-server-2023-01\10-xml_json\demo\04-xml_data_type.xml',
    SINGLE_CLOB) AS d);
 
 -- value(XQuery/XPath, Type) - возвращает скалярное (единичное) значение
@@ -144,7 +144,7 @@ GO
 -- Можно использовать вместо OPENXML
 
 DECLARE @x XML;
-SET @x = (SELECT * FROM OPENROWSET (BULK 'Z:\2021-03\08-xml_json_hw\examples\04-xml_data_type.xml', SINGLE_BLOB)  AS d);
+SET @x = (SELECT * FROM OPENROWSET (BULK 'Z:\otus\ms-sql-server-2023-01\10-xml_json\demo\04-xml_data_type.xml', SINGLE_BLOB)  AS d);
 
 SELECT  
   t.Supplier.value('(@Id)[1]', 'int') AS [Id],

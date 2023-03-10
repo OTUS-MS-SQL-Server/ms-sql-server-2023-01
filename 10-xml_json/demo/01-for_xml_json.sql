@@ -73,8 +73,6 @@ GO
 -- | Alaska    | Adak,  Akhiok,  Akiachak,  Akiak,  Akutan |
 -- +-----------+-------------------------------------------+
 
--- https://habr.com/ru/post/200120/
-
 -- исходная таблица
 SELECT TOP 10 
     s.StateProvinceName AS [StateName],    
@@ -82,7 +80,19 @@ SELECT TOP 10
 FROM Application.Cities c 
 JOIN Application.StateProvinces s ON s.StateProvinceID = c.StateProvinceID;
 
--- вывести имя штата и список городов в этом штате (в одной строке)
+-- Задача - вывести имя штата и список городов в этом штате (в одной строке)
+
+-- С SQL Server 2017 есть функция STRING_AGG()
+SELECT TOP 10 
+    s.StateProvinceName AS [StateName],    
+    STRING_AGG(cast(c.CityName AS NVARCHAR(max)), ', ') AS Cities
+FROM Application.Cities c 
+JOIN Application.StateProvinces s ON s.StateProvinceID = c.StateProvinceID
+GROUP BY s.StateProvinceName;
+
+-- С помощью XML
+-- https://habr.com/ru/post/200120/
+
 SELECT TOP 10 
     s.StateProvinceName AS [StateName],
     
@@ -93,14 +103,6 @@ SELECT TOP 10
 FROM Application.StateProvinces s;
 
 -- data() - https://docs.microsoft.com/ru-ru/sql/relational-databases/xml/column-names-with-the-path-specified-as-data
-
--- С SQL Server 2017 есть функция STRING_AGG()
-SELECT TOP 10 
-    s.StateProvinceName AS [StateName],    
-    STRING_AGG(cast(c.CityName AS NVARCHAR(max)), ', ') AS Cities
-FROM Application.Cities c 
-JOIN Application.StateProvinces s ON s.StateProvinceID = c.StateProvinceID
-GROUP BY s.StateProvinceName;
 
 
 -- Про другие варианты (FOR XML/JSON AUTO, FOR XML EXPLICIT)

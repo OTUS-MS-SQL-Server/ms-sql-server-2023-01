@@ -10,7 +10,7 @@ DECLARE @json NVARCHAR(max);
 
 SELECT @json = BulkColumn
 FROM OPENROWSET
-(BULK 'Z:\2022-02\11-xml_json_hw\examples\03-open_json.json', 
+(BULK 'Z:\otus\ms-sql-server-2023-01\10-xml_json\demo\03-open_json.json', 
  SINGLE_CLOB)
 AS data;
 
