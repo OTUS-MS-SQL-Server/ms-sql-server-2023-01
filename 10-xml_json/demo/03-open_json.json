@@ -1,0 +1,43 @@
+{
+    "Suppliers": [
+        {
+            "Id": 1,
+            "SupplierInfo": {
+                "Name": "A Datum Corporation",
+                "Category": "Novelty Goods Supplier"
+            },
+            "Contact": {
+                "Primary": "Reio Kabin",
+                "Alternate": "Oliver Kivi"
+            },
+            "WebsiteURL": "http:\/\/www.adatum.com",
+            "CityName": "Zionsville"
+        },
+        {
+            "Id": 2,
+            "SupplierInfo": {
+                "Name": "Contoso, Ltd.",
+                "Category": "Novelty Goods Supplier"
+            },
+            "Contact": {
+                "Primary": "Hanna Mihhailov",
+                "Alternate": "Paulus Lippmaa"
+            },
+            "WebsiteURL": "http:\/\/www.contoso.com",
+            "CityName": "Greenbank"
+        },
+        {
+            "Id": 3,
+            "SupplierInfo": {
+                "Name": "Consolidated Messenger",
+                "Category": "Courier Services Supplier"
+            },
+            "Contact": {
+                "Primary": "Kerstin Parn",
+                "Alternate": "Helen Ahven"
+            },
+            "WebsiteURL": "http:\/\/www.consolidatedmessenger.com",
+            "CityName": "San Francisco"
+        }
+    ]
+}
