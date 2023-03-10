@@ -1,0 +1,39 @@
+[
+	{
+		"category": "ITPro",
+		"title": "Programming SQL Server",
+		"author": "Lenni Lobel",
+		"price": {
+			"amount": 49.99,
+			"currency": "USD"
+		},
+		"purchaseSites": [
+			"amazon.com",
+			"booksonline.com"
+		]
+	},
+	{
+		"category": "Developer",
+		"title": "Developing ADO .NET",
+		"author": "Andrew Brust",
+		"price": {
+			"amount": 39.93,
+			"currency": "USD"
+		},
+		"purchaseSites": [
+			"booksonline.com"
+		]
+	},
+	{
+		"category": "ITPro",
+		"title": "Windows Cluster Server",
+		"author": "Stephen Forte",
+		"price": {
+			"amount": 59.99,
+			"currency": "CAD"
+		},
+		"purchaseSites": [
+			"amazon.com"
+		]
+	}
+]

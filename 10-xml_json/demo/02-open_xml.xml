@@ -1,0 +1,29 @@
+﻿<Orders>
+	<Order ID="1">
+	  <Address>	
+	      <City>Piter</City>
+		  <Street>Street1</Street>
+	  </Address>
+	  <OrderNumber>1</OrderNumber>
+	  <CustomerNumber>2</CustomerNumber>
+	  <OrderDate>2018-06-26</OrderDate>
+	</Order>
+	<Order ID="2">
+	   <Address>	
+	      <City>Moscow</City>
+		  <Street>Street2</Street>
+	  </Address>
+	  <OrderNumber>2</OrderNumber>
+	  <CustomerNumber>4</CustomerNumber>
+	  <OrderDate>2019-06-27</OrderDate>
+	</Order>
+	<Order ID="3">
+	  <Address>	
+	      <City>Moscow</City>
+		  <Street>Street1</Street>
+	  </Address>
+	  <OrderNumber>1054</OrderNumber>
+	  <CustomerNumber>9445</CustomerNumber>
+	  <OrderDate>2015-04-06</OrderDate>
+	</Order>
+</Orders>

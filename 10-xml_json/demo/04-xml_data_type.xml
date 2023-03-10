@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Suppliers>
+   <Supplier Id="  1  ">
+      <Name>
+         ADatumCorporation
+      </Name>
+      <SupplierInfo>
+         <Category>NoveltyGoodsSupplier</Category>
+      </SupplierInfo>
+      <Contact>
+         <Primary>ReioKabin</Primary>
+         <Alternate>OliverKivi</Alternate>
+      </Contact>
+      <WebsiteURL>http://www.adatum.com</WebsiteURL>
+      <CityName>Zionsville</CityName>
+      <!--SupplierReference:AA20384-->
+   </Supplier>
+   <Supplier Id="2">
+      <Name>Contoso,Ltd.</Name>
+      <SupplierInfo>
+         <Category>NoveltyGoodsSupplier</Category>
+      </SupplierInfo>
+      <Contact>
+         <Primary>HannaMihhailov</Primary>
+         <Alternate>PaulusLippmaa</Alternate>
+      </Contact>
+      <WebsiteURL>http://www.contoso.com</WebsiteURL>
+      <CityName>Greenbank</CityName>
+      <!--SupplierReference:B2084020-->
+   </Supplier>
+   <Supplier Id="3">
+      <Name>ConsolidatedMessenger</Name>
+      <SupplierInfo>
+         <Category>CourierServicesSupplier</Category>
+      </SupplierInfo>
+      <Contact>
+         <Primary>KerstinParn</Primary>
+         <Alternate>HelenAhven</Alternate>
+      </Contact>
+      <WebsiteURL>http://www.consolidatedmessenger.com</WebsiteURL>
+      <CityName>SanFrancisco</CityName>
+      <!--SupplierReference:209340283-->
+   </Supplier>
+</Suppliers>
