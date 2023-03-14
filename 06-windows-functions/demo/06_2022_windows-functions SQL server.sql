@@ -339,7 +339,7 @@ customer_id,
 cnt,
 SUM(cnt) OVER (ORDER BY customer_id RANGE UNBOUNDED PRECEDING) AS current_and_all_before2
 FROM sales
-ORDER BY customer_id, sales_id;
+ORDER BY 2, sales_id;
 
 SELECT sales_id, customer_id, price_per_item, cnt, 
 SUM(cnt) OVER (ORDER BY customer_id DESC, price_per_item DESC) AS cum_uniq,
