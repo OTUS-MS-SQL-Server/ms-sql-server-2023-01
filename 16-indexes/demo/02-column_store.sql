@@ -11,7 +11,7 @@ SELECT COUNT(*) AS ROWS_COUNT
 FROM Warehouse.ColdRoomTemperatures
 FOR SYSTEM_TIME ALL;
 
-SELECT TOP 5 
+SELECT TOP 20
     ColdRoomTemperatureID,
     ColdRoomSensorNumber,
     RecordedWhen,
@@ -66,8 +66,7 @@ GO
 
 -- Что быстрее, насколько (по стоимости планов)? Или разницы не будет?
 SELECT AVG(Temperature) FROM dbo.Test_Index_RowStore OPTION(MAXDOP 1); 
-
-PRINT '-----------------';
+GO
 
 SELECT AVG(Temperature) FROM dbo.Test_Index_ColumnStore OPTION(MAXDOP 1);
 GO

@@ -36,6 +36,9 @@ SELECT lcid, name
 FROM sys.fulltext_languages
 WHERE lcid = 1033;
 
+-- Подробнее о выборе языка при создании полнотекстового индекса
+-- https://learn.microsoft.com/ru-RU/sql/relational-databases/search/choose-a-language-when-creating-a-full-text-index?view=sql-server-ver15
+
 -- Создаем полнотекстовый каталог
 CREATE FULLTEXT CATALOG WWI_FT_Catalog
 WITH ACCENT_SENSITIVITY = ON
