@@ -1,13 +1,8 @@
-ALTER TABLE Sales.Invoices 
-DROP COLUMN InvoiceConfirmedForProcessing;
 
 DROP SERVICE [//WWI/SB/TargetService]
 GO
 
 DROP SERVICE [//WWI/SB/InitiatorService]
-GO
-
-DROP SERVICE [//WWI//InitiatorService]
 GO
 
 DROP QUEUE [dbo].[TargetQueueWWI]
@@ -30,3 +25,7 @@ DROP PROCEDURE IF EXISTS  Sales.SendNewInvoice;
 DROP PROCEDURE IF EXISTS  Sales.GetNewInvoice;
 
 DROP PROCEDURE IF EXISTS  Sales.ConfirmInvoice;
+
+
+ALTER TABLE Sales.Invoices 
+DROP COLUMN InvoiceConfirmedForProcessing;
