@@ -13,6 +13,7 @@ FROM sys.fn_dblog(NULL,NULL)
 
 SELECT 
   [Current LSN],
+  [Transaction ID],
   Operation, 
   Description,
   [Compression Info], 

@@ -36,7 +36,7 @@ BEGIN TRAN --  BEGIN TRANSACTION
 
   SELECT * FROM dbo.test;
 
-COMMIT TRAN -- COMMIT TRANSACTION
+COMMIT -- COMMIT TRAN -- COMMIT TRANSACTION
 
 SELECT * FROM dbo.test;
 
@@ -58,7 +58,9 @@ ROLLBACK -- ROLLBACK TRANSACTION
 
 SELECT * FROM dbo.test;
 
--- autocommit
+
+-- autocommit,
+-- одиночные операторы автоматически начинают и фиксируют транзакцию
 
 INSERT INTO dbo.test (name, amount)
 VALUES ('banana', 123);
@@ -90,5 +92,4 @@ SET IMPLICIT_TRANSACTIONS OFF;
 
 
 DROP TABLE IF EXISTS dbo.test
-SET IMPLICIT_TRANSACTIONS OFF;
 GO
