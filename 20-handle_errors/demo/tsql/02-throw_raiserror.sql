@@ -160,5 +160,7 @@ GO
 EXEC Warehouse.ChangeStockItemUnitPrice @StockItemID = 1000, @UnitPrice = 30;
 GO
 
+-- SQL Agent и Alerts
+
 -- Дополнительно про sys.messages, message_id и т.д.
 -- См. 03-messsages.sql

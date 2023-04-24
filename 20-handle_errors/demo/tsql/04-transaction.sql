@@ -79,7 +79,7 @@ GO
 
 -- Есть запись в Warehouse.Logs, хоть и транзакция
 -- Ваши предложения как решить проблему?
--- Транзакция не работет ???
+-- Транзакция не работает ???
 -- (см. ниже)
 
 
@@ -146,7 +146,8 @@ GO
 -- вроде работает
 -- но есть решение правильнее - TRY/CATCH
 
--- @XACT_ABORT по умолчанию OFF
+-- XACT_ABORT OFF — это значение по умолчанию , а.
+-- @XACT_ABORT по умолчанию OFF в инструкциях T-SQL, ON значение по умолчанию в триггере
 -- Но можно изменить через user options -- 16384
 -- https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-the-user-options-server-configuration-option
 
@@ -159,7 +160,7 @@ GO
 DECLARE @XACT_ABORT VARCHAR(3) = 'OFF';
 IF ( (16384 & @@OPTIONS) = 16384 ) 
 BEGIN
-        SET @XACT_ABORT = 'ON';
+	SET @XACT_ABORT = 'ON';
 END
 SELECT @XACT_ABORT AS XACT_ABORT;
 GO
@@ -172,11 +173,30 @@ GO
 -- ---------------------------
 -- см. слайд
 
+-- Ошибок нет
+BEGIN TRY
+  PRINT 10 / 2;
+  PRINT N'Ошибок нет';
+END TRY
+BEGIN CATCH
+  PRINT N'Ошибка';
+END CATCH
+
+-- Ошибка
+BEGIN TRY
+  PRINT 10 / 0;
+  PRINT N'Ошибок нет';
+END TRY
+BEGIN CATCH
+  PRINT N'Ошибка';
+END CATCH
+
 -- Добавляем TRY / CATCH
 CREATE OR ALTER PROCEDURE Warehouse.ChangeStockItemUnitPrice
     @StockItemID INT,
     @UnitPrice DECIMAL(18,2)
 AS
+BEGIN
     SET NOCOUNT ON;
     SET XACT_ABORT ON; -- <<< это оставляем
     
@@ -223,21 +243,24 @@ AS
         PRINT @errorMessage;
 
         -- Можем дальше бросить ту же ошибку:
-        --RAISERROR (@errorMessage, 16, 1)
+        -- RAISERROR (@errorMessage, 16, 1)
         -- или
         -- THROW;
 
         -- Или отправить более внятный текст:
         THROW 50005, N'Ошибка при изменении цены StockItem', 1;
     END CATCH; -- <<<
+END
 GO
+
+-- Не существующий StockItemID
+EXEC Warehouse.ChangeStockItemUnitPrice  @StockItemID = 999, @UnitPrice = 11;
 
 -- ERROR_LINE() - относительно ХП, а не скрипта
 SELECT OBJECT_DEFINITION (OBJECT_ID(N'WideWorldImporters.Warehouse.ChangeStockItemUnitPrice')); 
  
+EXEC sp_helptext N'WideWorldImporters.Warehouse.ChangeStockItemUnitPrice';
 
--- Не существующий StockItemID
-EXEC Warehouse.ChangeStockItemUnitPrice  @StockItemID = 999, @UnitPrice = 11;
 
 SELECT * FROM Warehouse.Logs;
 SELECT * FROM Sales.SpecialDeals;

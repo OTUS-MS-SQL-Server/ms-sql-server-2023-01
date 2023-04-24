@@ -1,7 +1,5 @@
 /* tsqllint-disable error print-statement */
 
-DECLARE @ErrorNum INT;
-
 -- Msg 8134, Level 16, State 1, Line 2
 -- Divide by zero error encountered.
 SELECT 1 / 0;
@@ -16,6 +14,9 @@ PRINT @@ERROR;
 -- для последующей проверки.
 
 -- можно работать с ошибками и через @@ERROR (но лучше TRY/CATCH)
+
+DECLARE @ErrorNum INT;
+SELECT 1 / 0;
 
 SET @ErrorNum = @@ERROR;
 IF @ErrorNum = 0
