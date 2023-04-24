@@ -15,8 +15,8 @@ namespace Client
             var connectionString =
                 "Server=localhost;Database=WideWorldImporters;Integrated Security=true;";
 
-            try
-            {
+            //try
+            //{
                 using (var connection = new SqlConnection(connectionString))
                 using (var cmd = new SqlCommand("Warehouse.ChangeStockItemUnitPrice", connection))
                 {
@@ -30,12 +30,12 @@ namespace Client
                     cmd.ExecuteNonQuery();
                 }
                 Console.WriteLine("OK");
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("Код ошибки: " + ex.Number);
-            }
+            //}
+            //catch (SqlException ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //    Console.WriteLine("Код ошибки: " + ex.Number);
+            //}
         }
     }
 }
