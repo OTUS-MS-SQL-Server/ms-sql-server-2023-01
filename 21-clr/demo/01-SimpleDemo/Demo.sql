@@ -31,7 +31,7 @@ ALTER DATABASE WideWorldImporters SET TRUSTWORTHY ON;
 -- Подключаем dll 
 -- Измените путь к файлу!
 CREATE ASSEMBLY SimpleDemoAssembly
-FROM 'C:\vagrant\2021-08\13-clr_hw\examples\01-SimpleDemo\bin\Debug\SimpleDemo.dll'
+FROM 'Z:\ms-sql-server-2023-01\21-clr\demo\01-SimpleDemo\bin\Debug\SimpleDemo.dll'
 WITH PERMISSION_SET = SAFE;  
 
 -- DROP ASSEMBLY SimpleDemoAssembly
@@ -44,8 +44,7 @@ WITH PERMISSION_SET = SAFE;
 -- <DB> -> Programmability -> Assemblies 
 
 -- Посмотреть подключенные сборки (SSMS: <DB> -> Programmability -> Assemblies)
-SELECT name, principal_id, assembly_id, clr_name, permission_set, permission_set_desc, is_visible, create_date, modify_date, is_user_defined
-FROM sys.assemblies;
+SELECT * FROM sys.assemblies;
 GO
 
 -- Подключить функцию из dll - AS EXTERNAL NAME
