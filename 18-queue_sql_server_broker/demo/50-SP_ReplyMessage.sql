@@ -19,7 +19,7 @@ BEGIN
 		@MessageType = Message_Type_Name
 	FROM dbo.TargetQueueWWI; 
 
-	SELECT @Message;
+	SELECT @Message; --не для прода
 
 	SET @xml = CAST(@Message AS XML);
 
@@ -33,7 +33,7 @@ BEGIN
 		WHERE InvoiceId = @InvoiceID;
 	END;
 	
-	SELECT @Message AS ReceivedRequestMessage, @MessageType; 
+	SELECT @Message AS ReceivedRequestMessage, @MessageType; --не для прода
 	
 	-- Confirm and Send a reply
 	IF @MessageType=N'//WWI/SB/RequestMessage'
@@ -47,7 +47,7 @@ BEGIN
 		END CONVERSATION @TargetDlgHandle;
 	END 
 	
-	SELECT @ReplyMessage AS SentReplyMessage; 
+	SELECT @ReplyMessage AS SentReplyMessage; --не для прода
 
 	COMMIT TRAN;
 END

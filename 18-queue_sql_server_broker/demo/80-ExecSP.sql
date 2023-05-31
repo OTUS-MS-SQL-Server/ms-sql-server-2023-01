@@ -5,7 +5,7 @@ WHERE InvoiceID IN ( 61210,61211,61212,61213) ;
 
 --Send message
 EXEC Sales.SendNewInvoice
-	@invoiceId = 61213;
+	@invoiceId = 61210;
 
 SELECT InvoiceID
 FROM Sales.Invoices AS Inv

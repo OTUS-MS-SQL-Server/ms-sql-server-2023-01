@@ -15,7 +15,7 @@ BEGIN
 		
 		END CONVERSATION @InitiatorReplyDlgHandle; 
 		
-		SELECT @ReplyReceivedMessage AS ReceivedRepliedMessage; 
+		SELECT @ReplyReceivedMessage AS ReceivedRepliedMessage; --не для прода
 
 	COMMIT TRAN; 
 END
