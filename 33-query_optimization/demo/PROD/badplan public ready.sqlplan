@@ -1,0 +1,2411 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ShowPlanXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.2" Build="11.0.6248.0" xmlns="http://schemas.microsoft.com/sqlserver/2004/07/showplan">
+  <BatchSequence>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="6" StatementEstRows="1" StatementId="1" StatementOptmLevel="FULL" StatementOptmEarlyAbortReason="TimeOut" StatementSubTreeCost="0.199023" StatementText="SELECT TOP 1 @StructureId = VF.StructureId, @parentId = D.parentId, @MainId = VF.MainId&#xD;&#xA;  FROM dbo.StructureSub VF &#xD;&#xA;  INNER JOIN dbo.vwTree D ON D.DirId = VF.MainId AND D.StructureId = VF.StructureId&#xD;&#xA;  WHERE VF.StructureSubId = @StructureSubId;&#xD;&#xA;  &#xD;&#xA; " StatementType="SELECT" QueryHash="0x4A99E97064AC632E" QueryPlanHash="0x14D1F15F9BB1D180" RetrievedFromCache="true">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="1" CachedPlanSize="32" CompileTime="85" CompileCPU="21" CompileMemory="1016">
+            <MemoryGrantInfo SerialRequiredMemory="0" SerialDesiredMemory="0" />
+            <OptimizerHardwareDependentProperties EstimatedAvailableMemoryGrant="1556480" EstimatedPagesCached="3112960" EstimatedAvailableDegreeOfParallelism="16" />
+            <RelOp AvgRowSize="27" EstimateCPU="1E-07" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Top" NodeId="0" Parallel="false" PhysicalOp="Top" EstimatedTotalSubtreeCost="0.199023">
+              <OutputList>
+                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="StructureId" />
+                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="MainId" />
+                <ColumnReference Column="Union1014" />
+              </OutputList>
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="1" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <Top RowCount="false" IsPercent="false" WithTies="false">
+                <TopExpression>
+                  <ScalarOperator ScalarString="(1)">
+                    <Const ConstValue="(1)" />
+                  </ScalarOperator>
+                </TopExpression>
+                <RelOp AvgRowSize="27" EstimateCPU="1.62056E-05" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Inner Join" NodeId="1" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="0.199023">
+                  <OutputList>
+                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="StructureId" />
+                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="MainId" />
+                    <ColumnReference Column="Union1014" />
+                  </OutputList>
+                  <RunTimeInformation>
+                    <RunTimeCountersPerThread Thread="0" ActualRows="1" ActualEndOfScans="0" ActualExecutions="1" />
+                  </RunTimeInformation>
+                  <NestedLoops Optimized="false">
+                    <OuterReferences>
+                      <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="StructureId" />
+                      <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="MainId" />
+                    </OuterReferences>
+                    <RelOp AvgRowSize="19" EstimateCPU="0.000159132" EstimateIO="0.003125" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1.93847" LogicalOp="Clustered Index Seek" NodeId="2" Parallel="false" PhysicalOp="Clustered Index Seek" EstimatedTotalSubtreeCost="0.00328413" TableCardinality="908518">
+                      <OutputList>
+                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="StructureId" />
+                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="MainId" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="1" ActualEndOfScans="0" ActualExecutions="1" />
+                      </RunTimeInformation>
+                      <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" ForceScan="false" NoExpandHint="false" Storage="RowStore">
+                        <DefinedValues>
+                          <DefinedValue>
+                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="StructureId" />
+                          </DefinedValue>
+                          <DefinedValue>
+                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="MainId" />
+                          </DefinedValue>
+                        </DefinedValues>
+                        <Object Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Index="[PK_StructureSub]" Alias="[VF]" IndexKind="Clustered" />
+                        <SeekPredicates>
+                          <SeekPredicateNew>
+                            <SeekKeys>
+                              <Prefix ScanType="EQ">
+                                <RangeColumns>
+                                  <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="StructureSubId" />
+                                </RangeColumns>
+                                <RangeExpressions>
+                                  <ScalarOperator ScalarString="[@StructureSubId]">
+                                    <Identifier>
+                                      <ColumnReference Column="@StructureSubId" />
+                                    </Identifier>
+                                  </ScalarOperator>
+                                </RangeExpressions>
+                              </Prefix>
+                            </SeekKeys>
+                          </SeekPredicateNew>
+                        </SeekPredicates>
+                      </IndexScan>
+                    </RelOp>
+                    <RelOp AvgRowSize="15" EstimateCPU="2E-07" EstimateIO="0" EstimateRebinds="0.938466" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="2" LogicalOp="Concatenation" NodeId="3" Parallel="false" PhysicalOp="Concatenation" EstimatedTotalSubtreeCost="0.195722">
+                      <OutputList>
+                        <ColumnReference Column="Union1014" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="1" ActualEndOfScans="0" ActualExecutions="1" />
+                      </RunTimeInformation>
+                      <Concat>
+                        <DefinedValues>
+                          <DefinedValue>
+                            <ColumnReference Column="Union1014" />
+                            <ColumnReference Column="Expr1006" />
+                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                          </DefinedValue>
+                        </DefinedValues>
+                        <RelOp AvgRowSize="28" EstimateCPU="1E-07" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0.938466" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="4" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="0.190839">
+                          <OutputList>
+                            <ColumnReference Column="Expr1006" />
+                          </OutputList>
+                          <ComputeScalar>
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1006" />
+                                <ScalarOperator ScalarString="CONVERT_IMPLICIT(bigint,[DB-7].[dbo].[Tree].[parentId],0)">
+                                  <Convert DataType="bigint" Style="0" Implicit="true">
+                                    <ScalarOperator>
+                                      <Identifier>
+                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="parentId" />
+                                      </Identifier>
+                                    </ScalarOperator>
+                                  </Convert>
+                                </ScalarOperator>
+                              </DefinedValue>
+                            </DefinedValues>
+                            <RelOp AvgRowSize="20" EstimateCPU="0.0001581" EstimateIO="0.190532" EstimateRebinds="0" EstimateRewinds="0.938466" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Index Scan" NodeId="5" Parallel="false" PhysicalOp="Index Scan" EstimatedTotalSubtreeCost="0.190839" TableCardinality="0">
+                              <OutputList>
+                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="parentId" />
+                              </OutputList>
+                              <RunTimeInformation>
+                                <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+                              </RunTimeInformation>
+                              <IndexScan Ordered="false" ForcedIndex="false" ForceSeek="false" ForceScan="false" NoExpandHint="false" Storage="RowStore">
+                                <DefinedValues>
+                                  <DefinedValue>
+                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="parentId" />
+                                  </DefinedValue>
+                                </DefinedValues>
+                                <Object Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Index="[IX_Tree_StructureId_Active]" IndexKind="NonClustered" />
+                                <Predicate>
+                                  <ScalarOperator ScalarString="[DB-7].[dbo].[Tree].[StructureId]=[DB-7].[dbo].[StructureSub].[StructureId] as [VF].[StructureId] AND [DB-7].[dbo].[Tree].[Active]&lt;(10) AND CONVERT_IMPLICIT(bigint,[DB-7].[dbo].[Tree].[DirId],0)=[DB-7].[dbo].[StructureSub].[MainId] as [VF].[MainId]">
+                                    <Logical Operation="AND">
+                                      <ScalarOperator>
+                                        <Compare CompareOp="EQ">
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="StructureId" />
+                                            </Identifier>
+                                          </ScalarOperator>
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="StructureId" />
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </Compare>
+                                      </ScalarOperator>
+                                      <ScalarOperator>
+                                        <Compare CompareOp="LT">
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Active" />
+                                            </Identifier>
+                                          </ScalarOperator>
+                                          <ScalarOperator>
+                                            <Const ConstValue="(10)" />
+                                          </ScalarOperator>
+                                        </Compare>
+                                      </ScalarOperator>
+                                      <ScalarOperator>
+                                        <Compare CompareOp="EQ">
+                                          <ScalarOperator>
+                                            <Convert DataType="bigint" Style="0" Implicit="true">
+                                              <ScalarOperator>
+                                                <Identifier>
+                                                  <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="DirId" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </Convert>
+                                          </ScalarOperator>
+                                          <ScalarOperator>
+                                            <Identifier>
+                                              <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="MainId" />
+                                            </Identifier>
+                                          </ScalarOperator>
+                                        </Compare>
+                                      </ScalarOperator>
+                                    </Logical>
+                                  </ScalarOperator>
+                                </Predicate>
+                              </IndexScan>
+                            </RelOp>
+                          </ComputeScalar>
+                        </RelOp>
+                        <RelOp AvgRowSize="16" EstimateCPU="0.0001581" EstimateIO="0.003125" EstimateRebinds="0.938466" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Clustered Index Seek" NodeId="9" Parallel="false" PhysicalOp="Clustered Index Seek" EstimatedTotalSubtreeCost="0.00487956" TableCardinality="92036300">
+                          <OutputList>
+                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                          </OutputList>
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="0" ActualRows="1" ActualEndOfScans="0" ActualExecutions="1" />
+                          </RunTimeInformation>
+                          <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" ForceScan="false" NoExpandHint="false" Storage="RowStore">
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                              </DefinedValue>
+                            </DefinedValues>
+                            <Object Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Index="[PK_Tree_BigInt]" IndexKind="Clustered" />
+                            <SeekPredicates>
+                              <SeekPredicateNew>
+                                <SeekKeys>
+                                  <Prefix ScanType="EQ">
+                                    <RangeColumns>
+                                      <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                      <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                    </RangeColumns>
+                                    <RangeExpressions>
+                                      <ScalarOperator ScalarString="[DB-7].[dbo].[StructureSub].[StructureId] as [VF].[StructureId]">
+                                        <Identifier>
+                                          <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="StructureId" />
+                                        </Identifier>
+                                      </ScalarOperator>
+                                      <ScalarOperator ScalarString="[DB-7].[dbo].[StructureSub].[MainId] as [VF].[MainId]">
+                                        <Identifier>
+                                          <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[StructureSub]" Alias="[VF]" Column="MainId" />
+                                        </Identifier>
+                                      </ScalarOperator>
+                                    </RangeExpressions>
+                                  </Prefix>
+                                </SeekKeys>
+                              </SeekPredicateNew>
+                            </SeekPredicates>
+                            <Predicate>
+                              <ScalarOperator ScalarString="[DB-7].[dbo].[Tree_BigInt].[Active]&lt;(10)">
+                                <Compare CompareOp="LT">
+                                  <ScalarOperator>
+                                    <Identifier>
+                                      <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                    </Identifier>
+                                  </ScalarOperator>
+                                  <ScalarOperator>
+                                    <Const ConstValue="(10)" />
+                                  </ScalarOperator>
+                                </Compare>
+                              </ScalarOperator>
+                            </Predicate>
+                          </IndexScan>
+                        </RelOp>
+                      </Concat>
+                    </RelOp>
+                  </NestedLoops>
+                </RelOp>
+              </Top>
+            </RelOp>
+            <ParameterList>
+              <ColumnReference Column="@MainId" ParameterRuntimeValue="(126192021)" />
+              <ColumnReference Column="@parentId" ParameterRuntimeValue="NULL" />
+              <ColumnReference Column="@StructureId" ParameterRuntimeValue="(6029387)" />
+              <ColumnReference Column="@StructureSubId" ParameterCompiledValue="(6029387)" ParameterRuntimeValue="(6029387)" />
+            </ParameterList>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="12" StatementEstRows="60" StatementId="2" StatementOptmLevel="FULL" StatementSubTreeCost="123.487" StatementText="INSERT INTO @Names (RowId, Name)&#xD;&#xA;    SELECT&#xD;&#xA;      ROW_NUMBER() OVER (ORDER BY T.c),&#xD;&#xA;      T.c.value('.', 'NVARCHAR(255)')&#xD;&#xA;    FROM &#xD;&#xA;      @virtualPathXml.nodes('/t') T(c)&#xD;&#xA;      &#xD;&#xA;" StatementType="INSERT" QueryHash="0xB5AB9ABA8E4BF4F9" QueryPlanHash="0xAB85E7648C88B00C" RetrievedFromCache="true">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="0" NonParallelPlanReason="CouldNotGenerateValidParallelPlan" CachedPlanSize="56" CompileTime="34" CompileCPU="7" CompileMemory="872">
+            <MemoryGrantInfo SerialRequiredMemory="0" SerialDesiredMemory="0" />
+            <OptimizerHardwareDependentProperties EstimatedAvailableMemoryGrant="1556480" EstimatedPagesCached="3112960" EstimatedAvailableDegreeOfParallelism="16" />
+            <RelOp AvgRowSize="9" EstimateCPU="6E-05" EstimateIO="0.016605" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="60" LogicalOp="Insert" NodeId="0" Parallel="false" PhysicalOp="Table Insert" EstimatedTotalSubtreeCost="123.487">
+              <OutputList />
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <Update DMLRequestSort="false">
+                <Object Table="[@Names]" />
+                <SetPredicate>
+                  <ScalarOperator ScalarString="[RowId] = [Expr1009],[Name] = [Expr1023]">
+                    <ScalarExpressionList>
+                      <ScalarOperator>
+                        <MultipleAssign>
+                          <Assign>
+                            <ColumnReference Column="RowId" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Column="Expr1009" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                          <Assign>
+                            <ColumnReference Column="Name" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Column="Expr1023" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                        </MultipleAssign>
+                      </ScalarOperator>
+                    </ScalarExpressionList>
+                  </ScalarOperator>
+                </SetPredicate>
+                <RelOp AvgRowSize="270" EstimateCPU="6E-06" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="60" LogicalOp="Compute Scalar" NodeId="1" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="123.47">
+                  <OutputList>
+                    <ColumnReference Column="Expr1009" />
+                    <ColumnReference Column="Expr1023" />
+                  </OutputList>
+                  <ComputeScalar>
+                    <DefinedValues>
+                      <DefinedValue>
+                        <ColumnReference Column="Expr1009" />
+                        <ScalarOperator ScalarString="CONVERT_IMPLICIT(int,[Expr1008],0)">
+                          <Convert DataType="int" Style="0" Implicit="true">
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Column="Expr1008" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Convert>
+                        </ScalarOperator>
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="Expr1023" />
+                        <ScalarOperator ScalarString="[Expr1022]">
+                          <Identifier>
+                            <ColumnReference Column="Expr1022" />
+                          </Identifier>
+                        </ScalarOperator>
+                      </DefinedValue>
+                    </DefinedValues>
+                    <RelOp AvgRowSize="274" EstimateCPU="0.0002508" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="60" LogicalOp="Inner Join" NodeId="2" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="123.47">
+                      <OutputList>
+                        <ColumnReference Column="Expr1008" />
+                        <ColumnReference Column="Expr1022" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="1" ActualExecutions="1" />
+                      </RunTimeInformation>
+                      <NestedLoops Optimized="false">
+                        <OuterReferences>
+                          <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                        </OuterReferences>
+                        <RelOp AvgRowSize="25" EstimateCPU="4.8E-06" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="60" LogicalOp="Compute Scalar" NodeId="3" Parallel="false" PhysicalOp="Sequence Project" EstimatedTotalSubtreeCost="1.00406">
+                          <OutputList>
+                            <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                            <ColumnReference Column="Expr1008" />
+                          </OutputList>
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="1" ActualExecutions="1" />
+                          </RunTimeInformation>
+                          <SequenceProject>
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1008" />
+                                <ScalarOperator ScalarString="row_number">
+                                  <Sequence FunctionName="row_number" />
+                                </ScalarOperator>
+                              </DefinedValue>
+                            </DefinedValues>
+                            <RelOp AvgRowSize="25" EstimateCPU="1.2E-06" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="60" LogicalOp="Segment" NodeId="4" Parallel="false" PhysicalOp="Segment" EstimatedTotalSubtreeCost="1.00406">
+                              <OutputList>
+                                <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                <ColumnReference Column="Segment1027" />
+                              </OutputList>
+                              <RunTimeInformation>
+                                <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="1" ActualExecutions="1" />
+                              </RunTimeInformation>
+                              <Segment>
+                                <GroupBy />
+                                <SegmentColumn>
+                                  <ColumnReference Column="Segment1027" />
+                                </SegmentColumn>
+                                <RelOp AvgRowSize="17" EstimateCPU="5.6E-05" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="60" LogicalOp="Filter" NodeId="5" Parallel="false" PhysicalOp="Filter" EstimatedTotalSubtreeCost="1.00406">
+                                  <OutputList>
+                                    <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                  </OutputList>
+                                  <RunTimeInformation>
+                                    <RunTimeCountersPerThread Thread="0" ActualRebinds="1" ActualRewinds="0" ActualRows="3" ActualEndOfScans="1" ActualExecutions="1" />
+                                  </RunTimeInformation>
+                                  <Filter StartupExpression="true">
+                                    <RelOp AvgRowSize="17" EstimateCPU="1.004" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="200" LogicalOp="Table-valued function" NodeId="6" Parallel="false" PhysicalOp="Table-valued function" EstimatedTotalSubtreeCost="1.004">
+                                      <OutputList>
+                                        <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                      </OutputList>
+                                      <RunTimeInformation>
+                                        <RunTimeCountersPerThread Thread="0" ActualRebinds="1" ActualRewinds="0" ActualRows="3" ActualEndOfScans="1" ActualExecutions="1" />
+                                      </RunTimeInformation>
+                                      <TableValuedFunction>
+                                        <DefinedValues>
+                                          <DefinedValue>
+                                            <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                          </DefinedValue>
+                                        </DefinedValues>
+                                        <Object Table="[XML Reader with XPath filter]" />
+                                        <ParameterList>
+                                          <ScalarOperator ScalarString="[@virtualPathXml]">
+                                            <Identifier>
+                                              <ColumnReference Column="@virtualPathXml" />
+                                            </Identifier>
+                                          </ScalarOperator>
+                                          <ScalarOperator ScalarString="(0)">
+                                            <Const ConstValue="(0)" />
+                                          </ScalarOperator>
+                                          <ScalarOperator ScalarString="NULL">
+                                            <Const ConstValue="NULL" />
+                                          </ScalarOperator>
+                                          <ScalarOperator ScalarString="NULL">
+                                            <Const ConstValue="NULL" />
+                                          </ScalarOperator>
+                                        </ParameterList>
+                                      </TableValuedFunction>
+                                    </RelOp>
+                                    <Predicate>
+                                      <ScalarOperator ScalarString="[@virtualPathXml] IS NOT NULL">
+                                        <Identifier>
+                                          <ColumnReference Column="ConstExpr1024">
+                                            <ScalarOperator>
+                                              <Compare CompareOp="IS NOT">
+                                                <ScalarOperator>
+                                                  <Identifier>
+                                                    <ColumnReference Column="@virtualPathXml" />
+                                                  </Identifier>
+                                                </ScalarOperator>
+                                                <ScalarOperator>
+                                                  <Const ConstValue="NULL" />
+                                                </ScalarOperator>
+                                              </Compare>
+                                            </ScalarOperator>
+                                          </ColumnReference>
+                                        </Identifier>
+                                      </ScalarOperator>
+                                    </Predicate>
+                                  </Filter>
+                                </RelOp>
+                              </Segment>
+                            </RelOp>
+                          </SequenceProject>
+                        </RelOp>
+                        <RelOp AvgRowSize="266" EstimateCPU="0.0004325" EstimateIO="0" EstimateRebinds="59" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Aggregate" NodeId="15" Parallel="false" PhysicalOp="Stream Aggregate" EstimatedTotalSubtreeCost="122.466">
+                          <OutputList>
+                            <ColumnReference Column="Expr1022" />
+                          </OutputList>
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="0" ActualExecutions="3" />
+                          </RunTimeInformation>
+                          <StreamAggregate>
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1022" />
+                                <ScalarOperator ScalarString="MIN(CASE WHEN [@virtualPathXml] IS NULL THEN NULL ELSE CASE WHEN datalength([Expr1019])&gt;=(128) THEN CONVERT_IMPLICIT(nvarchar(255),[Expr1020],0) ELSE CONVERT_IMPLICIT(nvarchar(255),[Expr1019],0) END END)">
+                                  <Aggregate AggType="MIN" Distinct="false">
+                                    <ScalarOperator>
+                                      <IF>
+                                        <Condition>
+                                          <ScalarOperator>
+                                            <Compare CompareOp="IS">
+                                              <ScalarOperator>
+                                                <Identifier>
+                                                  <ColumnReference Column="@virtualPathXml" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                              <ScalarOperator>
+                                                <Const ConstValue="NULL" />
+                                              </ScalarOperator>
+                                            </Compare>
+                                          </ScalarOperator>
+                                        </Condition>
+                                        <Then>
+                                          <ScalarOperator>
+                                            <Const ConstValue="NULL" />
+                                          </ScalarOperator>
+                                        </Then>
+                                        <Else>
+                                          <ScalarOperator>
+                                            <IF>
+                                              <Condition>
+                                                <ScalarOperator>
+                                                  <Compare CompareOp="GE">
+                                                    <ScalarOperator>
+                                                      <Intrinsic FunctionName="datalength">
+                                                        <ScalarOperator>
+                                                          <Identifier>
+                                                            <ColumnReference Column="Expr1019" />
+                                                          </Identifier>
+                                                        </ScalarOperator>
+                                                      </Intrinsic>
+                                                    </ScalarOperator>
+                                                    <ScalarOperator>
+                                                      <Const ConstValue="(128)" />
+                                                    </ScalarOperator>
+                                                  </Compare>
+                                                </ScalarOperator>
+                                              </Condition>
+                                              <Then>
+                                                <ScalarOperator>
+                                                  <Convert DataType="nvarchar" Length="510" Style="0" Implicit="true">
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Column="Expr1020" />
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                  </Convert>
+                                                </ScalarOperator>
+                                              </Then>
+                                              <Else>
+                                                <ScalarOperator>
+                                                  <Convert DataType="nvarchar" Length="510" Style="0" Implicit="true">
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Column="Expr1019" />
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                  </Convert>
+                                                </ScalarOperator>
+                                              </Else>
+                                            </IF>
+                                          </ScalarOperator>
+                                        </Else>
+                                      </IF>
+                                    </ScalarOperator>
+                                  </Aggregate>
+                                </ScalarOperator>
+                              </DefinedValue>
+                            </DefinedValues>
+                            <RelOp AvgRowSize="8045" EstimateCPU="0.00072" EstimateIO="0" EstimateRebinds="59" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="720" LogicalOp="UDX" NodeId="16" Parallel="false" PhysicalOp="UDX" EstimatedTotalSubtreeCost="122.44">
+                              <OutputList>
+                                <ColumnReference Column="Expr1019" />
+                                <ColumnReference Column="Expr1020" />
+                              </OutputList>
+                              <RunTimeInformation>
+                                <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="3" ActualExecutions="3" />
+                              </RunTimeInformation>
+                              <Extension UDXName="XQUERY DATA">
+                                <DefinedValues>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Expr1017" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Expr1018" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Expr1019" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Expr1020" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Expr1021" />
+                                  </DefinedValue>
+                                </DefinedValues>
+                                <UsedUDXColumns>
+                                  <ColumnReference Table="[XML Reader]" Column="id" />
+                                  <ColumnReference Table="[XML Reader]" Column="nid" />
+                                  <ColumnReference Table="[XML Reader]" Column="tid" />
+                                  <ColumnReference Table="[XML Reader]" Column="value" />
+                                  <ColumnReference Table="[XML Reader]" Column="lvalue" />
+                                  <ColumnReference Table="[XML Reader]" Column="lvaluebin" />
+                                  <ColumnReference Column="Expr1013" />
+                                  <ColumnReference Table="[XML Reader]" Column="id" />
+                                </UsedUDXColumns>
+                                <RelOp AvgRowSize="8551" EstimateCPU="9E-05" EstimateIO="0" EstimateRebinds="59" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="900" LogicalOp="Compute Scalar" NodeId="17" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="122.397">
+                                  <OutputList>
+                                    <ColumnReference Column="Expr1013" />
+                                    <ColumnReference Table="[XML Reader]" Column="id" />
+                                    <ColumnReference Table="[XML Reader]" Column="nid" />
+                                    <ColumnReference Table="[XML Reader]" Column="tid" />
+                                    <ColumnReference Table="[XML Reader]" Column="value" />
+                                    <ColumnReference Table="[XML Reader]" Column="lvalue" />
+                                    <ColumnReference Table="[XML Reader]" Column="lvaluebin" />
+                                  </OutputList>
+                                  <ComputeScalar>
+                                    <DefinedValues>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1013" />
+                                        <ScalarOperator ScalarString="0x58">
+                                          <Const ConstValue="0x58" />
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                    </DefinedValues>
+                                    <RelOp AvgRowSize="8099" EstimateCPU="0.003762" EstimateIO="0" EstimateRebinds="59" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="900" LogicalOp="Inner Join" NodeId="18" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="122.391">
+                                      <OutputList>
+                                        <ColumnReference Table="[XML Reader]" Column="id" />
+                                        <ColumnReference Table="[XML Reader]" Column="nid" />
+                                        <ColumnReference Table="[XML Reader]" Column="tid" />
+                                        <ColumnReference Table="[XML Reader]" Column="value" />
+                                        <ColumnReference Table="[XML Reader]" Column="lvalue" />
+                                        <ColumnReference Table="[XML Reader]" Column="lvaluebin" />
+                                      </OutputList>
+                                      <RunTimeInformation>
+                                        <RunTimeCountersPerThread Thread="0" ActualRows="6" ActualEndOfScans="3" ActualExecutions="3" />
+                                      </RunTimeInformation>
+                                      <NestedLoops Optimized="false">
+                                        <OuterReferences>
+                                          <ColumnReference Table="[XML Reader]" Column="id" />
+                                          <ColumnReference Column="Expr1025" />
+                                        </OuterReferences>
+                                        <RelOp AvgRowSize="469" EstimateCPU="9E-05" EstimateIO="0" EstimateRebinds="59" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="19" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="61.0854">
+                                          <OutputList>
+                                            <ColumnReference Table="[XML Reader]" Column="id" />
+                                            <ColumnReference Column="Expr1025" />
+                                          </OutputList>
+                                          <ComputeScalar>
+                                            <DefinedValues>
+                                              <DefinedValue>
+                                                <ColumnReference Column="Expr1025" />
+                                                <ScalarOperator ScalarString="getdescendantlimit(XML Reader.[id])">
+                                                  <Intrinsic FunctionName="getdescendantlimit">
+                                                    <ScalarOperator>
+                                                      <Identifier>
+                                                        <ColumnReference Table="[XML Reader]" Column="id" />
+                                                      </Identifier>
+                                                    </ScalarOperator>
+                                                  </Intrinsic>
+                                                </ScalarOperator>
+                                              </DefinedValue>
+                                            </DefinedValues>
+                                            <RelOp AvgRowSize="17" EstimateCPU="1.018" EstimateIO="0" EstimateRebinds="59" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="900" LogicalOp="Table-valued function" NodeId="20" Parallel="false" PhysicalOp="Table-valued function" EstimatedTotalSubtreeCost="61.08">
+                                              <OutputList>
+                                                <ColumnReference Table="[XML Reader]" Column="id" />
+                                              </OutputList>
+                                              <RunTimeInformation>
+                                                <RunTimeCountersPerThread Thread="0" ActualRebinds="3" ActualRewinds="0" ActualRows="3" ActualEndOfScans="3" ActualExecutions="3" />
+                                              </RunTimeInformation>
+                                              <TableValuedFunction>
+                                                <DefinedValues>
+                                                  <DefinedValue>
+                                                    <ColumnReference Table="[XML Reader]" Column="id" />
+                                                  </DefinedValue>
+                                                </DefinedValues>
+                                                <Object Table="[XML Reader]" />
+                                                <ParameterList>
+                                                  <ScalarOperator ScalarString="[@virtualPathXml]">
+                                                    <Identifier>
+                                                      <ColumnReference Column="@virtualPathXml" />
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator ScalarString="(15)">
+                                                    <Const ConstValue="(15)" />
+                                                  </ScalarOperator>
+                                                  <ScalarOperator ScalarString="XML Reader with XPath filter.[id]">
+                                                    <Identifier>
+                                                      <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator ScalarString="XML Reader with XPath filter.[id]">
+                                                    <Identifier>
+                                                      <ColumnReference Table="[XML Reader with XPath filter]" Column="id" />
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                </ParameterList>
+                                              </TableValuedFunction>
+                                            </RelOp>
+                                          </ComputeScalar>
+                                        </RelOp>
+                                        <RelOp AvgRowSize="8099" EstimateCPU="1.018" EstimateIO="0" EstimateRebinds="59" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="900" LogicalOp="Table-valued function" NodeId="28" Parallel="false" PhysicalOp="Table-valued function" EstimatedTotalSubtreeCost="61.08">
+                                          <OutputList>
+                                            <ColumnReference Table="[XML Reader]" Column="id" />
+                                            <ColumnReference Table="[XML Reader]" Column="nid" />
+                                            <ColumnReference Table="[XML Reader]" Column="tid" />
+                                            <ColumnReference Table="[XML Reader]" Column="value" />
+                                            <ColumnReference Table="[XML Reader]" Column="lvalue" />
+                                            <ColumnReference Table="[XML Reader]" Column="lvaluebin" />
+                                          </OutputList>
+                                          <RunTimeInformation>
+                                            <RunTimeCountersPerThread Thread="0" ActualRebinds="3" ActualRewinds="0" ActualRows="6" ActualEndOfScans="3" ActualExecutions="3" />
+                                          </RunTimeInformation>
+                                          <TableValuedFunction>
+                                            <DefinedValues>
+                                              <DefinedValue>
+                                                <ColumnReference Table="[XML Reader]" Column="id" />
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Table="[XML Reader]" Column="nid" />
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Table="[XML Reader]" Column="tid" />
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Table="[XML Reader]" Column="value" />
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Table="[XML Reader]" Column="lvalue" />
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Table="[XML Reader]" Column="lvaluebin" />
+                                              </DefinedValue>
+                                            </DefinedValues>
+                                            <Object Table="[XML Reader]" />
+                                            <ParameterList>
+                                              <ScalarOperator ScalarString="[@virtualPathXml]">
+                                                <Identifier>
+                                                  <ColumnReference Column="@virtualPathXml" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                              <ScalarOperator ScalarString="(7)">
+                                                <Const ConstValue="(7)" />
+                                              </ScalarOperator>
+                                              <ScalarOperator ScalarString="XML Reader.[id]">
+                                                <Identifier>
+                                                  <ColumnReference Table="[XML Reader]" Column="id" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                              <ScalarOperator ScalarString="[Expr1025]">
+                                                <Identifier>
+                                                  <ColumnReference Column="Expr1025" />
+                                                </Identifier>
+                                              </ScalarOperator>
+                                            </ParameterList>
+                                          </TableValuedFunction>
+                                        </RelOp>
+                                      </NestedLoops>
+                                    </RelOp>
+                                  </ComputeScalar>
+                                </RelOp>
+                              </Extension>
+                            </RelOp>
+                          </StreamAggregate>
+                        </RelOp>
+                      </NestedLoops>
+                    </RelOp>
+                  </ComputeScalar>
+                </RelOp>
+              </Update>
+            </RelOp>
+            <ParameterList>
+              <ColumnReference Column="@virtualPathXml" ParameterRuntimeValue="N'&lt;t&gt;2016 Taxes&lt;/t&gt;&lt;t&gt;05 - Completed Forms&lt;/t&gt;&lt;t&gt;Form 1040_SE_2016_MFJ Completed.pdf&lt;/t&gt;'" />
+            </ParameterList>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="13" StatementEstRows="1" StatementId="3" StatementOptmLevel="TRIVIAL" StatementSubTreeCost="0.0132844" StatementText="UPDATE @Names SET Name = REPLACE(Name,'&amp;amp;', '&amp;') WHERE Name LIKE '%&amp;amp;%';&#xD;&#xA;   " StatementType="UPDATE" QueryHash="0x58AD5AE811D19D37" QueryPlanHash="0x1029E461190C6618" RetrievedFromCache="true">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="0" NonParallelPlanReason="CouldNotGenerateValidParallelPlan" CachedPlanSize="16" CompileTime="14" CompileCPU="1" CompileMemory="304">
+            <MemoryGrantInfo SerialRequiredMemory="0" SerialDesiredMemory="0" />
+            <OptimizerHardwareDependentProperties EstimatedAvailableMemoryGrant="1556480" EstimatedPagesCached="3112960" EstimatedAvailableDegreeOfParallelism="16" />
+            <RelOp AvgRowSize="9" EstimateCPU="1E-06" EstimateIO="0.01" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Update" NodeId="0" Parallel="false" PhysicalOp="Table Update" EstimatedTotalSubtreeCost="0.0132844">
+              <OutputList />
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <Update DMLRequestSort="false">
+                <Object Table="[@Names]" />
+                <SetPredicate>
+                  <ScalarOperator ScalarString="[Name] = [Expr1004]">
+                    <ScalarExpressionList>
+                      <ScalarOperator>
+                        <MultipleAssign>
+                          <Assign>
+                            <ColumnReference Column="Name" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Column="Expr1004" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                        </MultipleAssign>
+                      </ScalarOperator>
+                    </ScalarExpressionList>
+                  </ScalarOperator>
+                </SetPredicate>
+                <RelOp AvgRowSize="274" EstimateCPU="1E-07" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="1" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="0.00328338">
+                  <OutputList>
+                    <ColumnReference Column="Bmk1000" />
+                    <ColumnReference Column="Expr1004" />
+                  </OutputList>
+                  <ComputeScalar>
+                    <DefinedValues>
+                      <DefinedValue>
+                        <ColumnReference Column="Expr1004" />
+                        <ScalarOperator ScalarString="CONVERT_IMPLICIT(nvarchar(255),replace([Name],N'&amp;amp;',N'&amp;'),0)">
+                          <Convert DataType="nvarchar" Length="510" Style="0" Implicit="true">
+                            <ScalarOperator>
+                              <Intrinsic FunctionName="replace">
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Name" />
+                                  </Identifier>
+                                </ScalarOperator>
+                                <ScalarOperator>
+                                  <Const ConstValue="N'&amp;amp;'" />
+                                </ScalarOperator>
+                                <ScalarOperator>
+                                  <Const ConstValue="N'&amp;'" />
+                                </ScalarOperator>
+                              </Intrinsic>
+                            </ScalarOperator>
+                          </Convert>
+                        </ScalarOperator>
+                      </DefinedValue>
+                    </DefinedValues>
+                    <RelOp AvgRowSize="274" EstimateCPU="7.96E-05" EstimateIO="0.0032035" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Table Scan" NodeId="2" Parallel="false" PhysicalOp="Table Scan" EstimatedTotalSubtreeCost="0.0032831" TableCardinality="0">
+                      <OutputList>
+                        <ColumnReference Column="Bmk1000" />
+                        <ColumnReference Column="Name" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+                      </RunTimeInformation>
+                      <TableScan Ordered="true" ForcedIndex="false" ForceScan="false" NoExpandHint="false">
+                        <DefinedValues>
+                          <DefinedValue>
+                            <ColumnReference Column="Bmk1000" />
+                          </DefinedValue>
+                          <DefinedValue>
+                            <ColumnReference Column="Name" />
+                          </DefinedValue>
+                        </DefinedValues>
+                        <Object Table="[@Names]" />
+                        <Predicate>
+                          <ScalarOperator ScalarString="[Name] like N'%&amp;amp;%'">
+                            <Intrinsic FunctionName="like">
+                              <ScalarOperator>
+                                <Identifier>
+                                  <ColumnReference Column="Name" />
+                                </Identifier>
+                              </ScalarOperator>
+                              <ScalarOperator>
+                                <Const ConstValue="N'%&amp;amp;%'" />
+                              </ScalarOperator>
+                            </Intrinsic>
+                          </ScalarOperator>
+                        </Predicate>
+                      </TableScan>
+                    </RelOp>
+                  </ComputeScalar>
+                </RelOp>
+              </Update>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="14" StatementEstRows="1" StatementId="4" StatementOptmLevel="TRIVIAL" StatementSubTreeCost="0.0132844" StatementText="UPDATE @Names SET Name = REPLACE(Name,'&amp;lt;', '&lt;') WHERE Name LIKE '%&amp;lt;%';&#xD;&#xA;   " StatementType="UPDATE" QueryHash="0x58AD5AE811D19D37" QueryPlanHash="0x1029E461190C6618" RetrievedFromCache="true">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="0" NonParallelPlanReason="CouldNotGenerateValidParallelPlan" CachedPlanSize="16" CompileTime="1" CompileCPU="1" CompileMemory="304">
+            <MemoryGrantInfo SerialRequiredMemory="0" SerialDesiredMemory="0" />
+            <OptimizerHardwareDependentProperties EstimatedAvailableMemoryGrant="1556480" EstimatedPagesCached="3112960" EstimatedAvailableDegreeOfParallelism="16" />
+            <RelOp AvgRowSize="9" EstimateCPU="1E-06" EstimateIO="0.01" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Update" NodeId="0" Parallel="false" PhysicalOp="Table Update" EstimatedTotalSubtreeCost="0.0132844">
+              <OutputList />
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <Update DMLRequestSort="false">
+                <Object Table="[@Names]" />
+                <SetPredicate>
+                  <ScalarOperator ScalarString="[Name] = [Expr1004]">
+                    <ScalarExpressionList>
+                      <ScalarOperator>
+                        <MultipleAssign>
+                          <Assign>
+                            <ColumnReference Column="Name" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Column="Expr1004" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                        </MultipleAssign>
+                      </ScalarOperator>
+                    </ScalarExpressionList>
+                  </ScalarOperator>
+                </SetPredicate>
+                <RelOp AvgRowSize="274" EstimateCPU="1E-07" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="1" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="0.00328338">
+                  <OutputList>
+                    <ColumnReference Column="Bmk1000" />
+                    <ColumnReference Column="Expr1004" />
+                  </OutputList>
+                  <ComputeScalar>
+                    <DefinedValues>
+                      <DefinedValue>
+                        <ColumnReference Column="Expr1004" />
+                        <ScalarOperator ScalarString="CONVERT_IMPLICIT(nvarchar(255),replace([Name],N'&amp;lt;',N'&lt;'),0)">
+                          <Convert DataType="nvarchar" Length="510" Style="0" Implicit="true">
+                            <ScalarOperator>
+                              <Intrinsic FunctionName="replace">
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Name" />
+                                  </Identifier>
+                                </ScalarOperator>
+                                <ScalarOperator>
+                                  <Const ConstValue="N'&amp;lt;'" />
+                                </ScalarOperator>
+                                <ScalarOperator>
+                                  <Const ConstValue="N'&lt;'" />
+                                </ScalarOperator>
+                              </Intrinsic>
+                            </ScalarOperator>
+                          </Convert>
+                        </ScalarOperator>
+                      </DefinedValue>
+                    </DefinedValues>
+                    <RelOp AvgRowSize="274" EstimateCPU="7.96E-05" EstimateIO="0.0032035" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Table Scan" NodeId="2" Parallel="false" PhysicalOp="Table Scan" EstimatedTotalSubtreeCost="0.0032831" TableCardinality="0">
+                      <OutputList>
+                        <ColumnReference Column="Bmk1000" />
+                        <ColumnReference Column="Name" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+                      </RunTimeInformation>
+                      <TableScan Ordered="true" ForcedIndex="false" ForceScan="false" NoExpandHint="false">
+                        <DefinedValues>
+                          <DefinedValue>
+                            <ColumnReference Column="Bmk1000" />
+                          </DefinedValue>
+                          <DefinedValue>
+                            <ColumnReference Column="Name" />
+                          </DefinedValue>
+                        </DefinedValues>
+                        <Object Table="[@Names]" />
+                        <Predicate>
+                          <ScalarOperator ScalarString="[Name] like N'%&amp;lt;%'">
+                            <Intrinsic FunctionName="like">
+                              <ScalarOperator>
+                                <Identifier>
+                                  <ColumnReference Column="Name" />
+                                </Identifier>
+                              </ScalarOperator>
+                              <ScalarOperator>
+                                <Const ConstValue="N'%&amp;lt;%'" />
+                              </ScalarOperator>
+                            </Intrinsic>
+                          </ScalarOperator>
+                        </Predicate>
+                      </TableScan>
+                    </RelOp>
+                  </ComputeScalar>
+                </RelOp>
+              </Update>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="15" StatementEstRows="1" StatementId="5" StatementOptmLevel="TRIVIAL" StatementSubTreeCost="0.0132844" StatementText="UPDATE @Names SET Name = REPLACE(Name,'&amp;gt;', '&gt;') WHERE Name LIKE '%&amp;gt;%';&#xD;&#xA;    &#xD;&#xA; " StatementType="UPDATE" QueryHash="0x58AD5AE811D19D37" QueryPlanHash="0x1029E461190C6618" RetrievedFromCache="true">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="0" NonParallelPlanReason="CouldNotGenerateValidParallelPlan" CachedPlanSize="16" CompileTime="1" CompileCPU="1" CompileMemory="304">
+            <MemoryGrantInfo SerialRequiredMemory="0" SerialDesiredMemory="0" />
+            <OptimizerHardwareDependentProperties EstimatedAvailableMemoryGrant="1556480" EstimatedPagesCached="3112960" EstimatedAvailableDegreeOfParallelism="16" />
+            <RelOp AvgRowSize="9" EstimateCPU="1E-06" EstimateIO="0.01" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Update" NodeId="0" Parallel="false" PhysicalOp="Table Update" EstimatedTotalSubtreeCost="0.0132844">
+              <OutputList />
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <Update DMLRequestSort="false">
+                <Object Table="[@Names]" />
+                <SetPredicate>
+                  <ScalarOperator ScalarString="[Name] = [Expr1004]">
+                    <ScalarExpressionList>
+                      <ScalarOperator>
+                        <MultipleAssign>
+                          <Assign>
+                            <ColumnReference Column="Name" />
+                            <ScalarOperator>
+                              <Identifier>
+                                <ColumnReference Column="Expr1004" />
+                              </Identifier>
+                            </ScalarOperator>
+                          </Assign>
+                        </MultipleAssign>
+                      </ScalarOperator>
+                    </ScalarExpressionList>
+                  </ScalarOperator>
+                </SetPredicate>
+                <RelOp AvgRowSize="274" EstimateCPU="1E-07" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="1" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="0.00328338">
+                  <OutputList>
+                    <ColumnReference Column="Bmk1000" />
+                    <ColumnReference Column="Expr1004" />
+                  </OutputList>
+                  <ComputeScalar>
+                    <DefinedValues>
+                      <DefinedValue>
+                        <ColumnReference Column="Expr1004" />
+                        <ScalarOperator ScalarString="CONVERT_IMPLICIT(nvarchar(255),replace([Name],N'&amp;gt;',N'&gt;'),0)">
+                          <Convert DataType="nvarchar" Length="510" Style="0" Implicit="true">
+                            <ScalarOperator>
+                              <Intrinsic FunctionName="replace">
+                                <ScalarOperator>
+                                  <Identifier>
+                                    <ColumnReference Column="Name" />
+                                  </Identifier>
+                                </ScalarOperator>
+                                <ScalarOperator>
+                                  <Const ConstValue="N'&amp;gt;'" />
+                                </ScalarOperator>
+                                <ScalarOperator>
+                                  <Const ConstValue="N'&gt;'" />
+                                </ScalarOperator>
+                              </Intrinsic>
+                            </ScalarOperator>
+                          </Convert>
+                        </ScalarOperator>
+                      </DefinedValue>
+                    </DefinedValues>
+                    <RelOp AvgRowSize="274" EstimateCPU="7.96E-05" EstimateIO="0.0032035" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Table Scan" NodeId="2" Parallel="false" PhysicalOp="Table Scan" EstimatedTotalSubtreeCost="0.0032831" TableCardinality="0">
+                      <OutputList>
+                        <ColumnReference Column="Bmk1000" />
+                        <ColumnReference Column="Name" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+                      </RunTimeInformation>
+                      <TableScan Ordered="true" ForcedIndex="false" ForceScan="false" NoExpandHint="false">
+                        <DefinedValues>
+                          <DefinedValue>
+                            <ColumnReference Column="Bmk1000" />
+                          </DefinedValue>
+                          <DefinedValue>
+                            <ColumnReference Column="Name" />
+                          </DefinedValue>
+                        </DefinedValues>
+                        <Object Table="[@Names]" />
+                        <Predicate>
+                          <ScalarOperator ScalarString="[Name] like N'%&amp;gt;%'">
+                            <Intrinsic FunctionName="like">
+                              <ScalarOperator>
+                                <Identifier>
+                                  <ColumnReference Column="Name" />
+                                </Identifier>
+                              </ScalarOperator>
+                              <ScalarOperator>
+                                <Const ConstValue="N'%&amp;gt;%'" />
+                              </ScalarOperator>
+                            </Intrinsic>
+                          </ScalarOperator>
+                        </Predicate>
+                      </TableScan>
+                    </RelOp>
+                  </ComputeScalar>
+                </RelOp>
+              </Update>
+            </RelOp>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+    <Batch>
+      <Statements>
+        <StmtSimple StatementCompId="17" StatementEstRows="32.0171" StatementId="6" StatementOptmLevel="FULL" StatementSubTreeCost="302.798" StatementText="WITH CTE AS&#xD;&#xA;  (&#xD;&#xA;    SELECT&#xD;&#xA;      R.DirId,&#xD;&#xA;      R.StructureId,&#xD;&#xA;      CAST('\' AS NVARCHAR(MAX)) as VirtualPath,&#xD;&#xA;      R.parentId,&#xD;&#xA;      R.Name,&#xD;&#xA;      R.Active,&#xD;&#xA;      0 as lvl&#xD;&#xA;    FROM dbo.vwTree R WITH (NOLOCK)&#xD;&#xA;    WHERE&#xD;&#xA;      R.StructureId = @StructureId&#xD;&#xA;      AND ((@parentId IS NULL AND R.parentId IS NULL) OR&#xD;&#xA;		(R.DirId = @MainId))&#xD;&#xA;    UNION ALL&#xD;&#xA;    SELECT&#xD;&#xA;      D.DirId,&#xD;&#xA;      D.StructureId,&#xD;&#xA;      CTE.VirtualPath + D.Name + '\' as VirtualPath,&#xD;&#xA;      D.parentId,&#xD;&#xA;      D.Name,&#xD;&#xA;      D.Active,&#xD;&#xA;      lvl + 1 as lvl&#xD;&#xA;    FROM dbo.vwTree D WITH (NOLOCK)&#xD;&#xA;      INNER JOIN CTE ON &#xD;&#xA;        CTE.DirId = D.parentId&#xD;&#xA;      INNER JOIN @Names N ON &#xD;&#xA;        N.Name = D.Name&#xD;&#xA;		AND DATALENGTH(N.Name) = DATALENGTH(D.Name)&#xD;&#xA;        AND N.RowId = cte.lvl + 1&#xD;&#xA;    WHERE&#xD;&#xA;      D.StructureId = @StructureId&#xD;&#xA;  )&#xD;&#xA;  SELECT&#xD;&#xA;    DirId,&#xD;&#xA;    @StructureSubId as StructureSubId,&#xD;&#xA;    VirtualPath,&#xD;&#xA;    parentId,&#xD;&#xA;    Name,&#xD;&#xA;    Active&#xD;&#xA;  FROM CTE&#xD;" StatementType="SELECT" QueryHash="0x6336D4864A38AE69" QueryPlanHash="0x27442EDB48C8474C" RetrievedFromCache="true">
+          <StatementSetOptions ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" NUMERIC_ROUNDABORT="false" QUOTED_IDENTIFIER="true" />
+          <QueryPlan DegreeOfParallelism="1" MemoryGrant="1024" CachedPlanSize="112" CompileTime="160" CompileCPU="38" CompileMemory="2088">
+            <MemoryGrantInfo SerialRequiredMemory="512" SerialDesiredMemory="576" RequiredMemory="512" DesiredMemory="576" RequestedMemory="1024" GrantWaitTime="0" GrantedMemory="1024" MaxUsedMemory="16" />
+            <OptimizerHardwareDependentProperties EstimatedAvailableMemoryGrant="1556480" EstimatedPagesCached="3112960" EstimatedAvailableDegreeOfParallelism="16" />
+            <RelOp AvgRowSize="4309" EstimateCPU="1.60085E-07" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="32.0171" LogicalOp="Lazy Spool" NodeId="0" Parallel="false" PhysicalOp="Index Spool" EstimatedTotalSubtreeCost="302.798">
+              <OutputList>
+                <ColumnReference Column="Expr1078" />
+                <ColumnReference Column="Recr1054" />
+                <ColumnReference Column="Recr1055" />
+                <ColumnReference Column="Recr1056" />
+                <ColumnReference Column="Recr1057" />
+                <ColumnReference Column="Recr1058" />
+                <ColumnReference Column="Recr1059" />
+                <ColumnReference Column="Recr1060" />
+              </OutputList>
+              <RunTimeInformation>
+                <RunTimeCountersPerThread Thread="0" ActualRebinds="1" ActualRewinds="0" ActualRows="3" ActualEndOfScans="1" ActualExecutions="1" />
+              </RunTimeInformation>
+              <Spool Stack="true">
+                <RelOp AvgRowSize="4309" EstimateCPU="3.20171E-08" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="32.0171" LogicalOp="Concatenation" NodeId="1" Parallel="false" PhysicalOp="Concatenation" EstimatedTotalSubtreeCost="302.785">
+                  <OutputList>
+                    <ColumnReference Column="Expr1078" />
+                    <ColumnReference Column="Recr1054" />
+                    <ColumnReference Column="Recr1055" />
+                    <ColumnReference Column="Recr1056" />
+                    <ColumnReference Column="Recr1057" />
+                    <ColumnReference Column="Recr1058" />
+                    <ColumnReference Column="Recr1059" />
+                    <ColumnReference Column="Recr1060" />
+                  </OutputList>
+                  <RunTimeInformation>
+                    <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="1" ActualExecutions="1" />
+                  </RunTimeInformation>
+                  <Concat>
+                    <DefinedValues>
+                      <DefinedValue>
+                        <ColumnReference Column="Expr1078" />
+                        <ColumnReference Column="Expr1075" />
+                        <ColumnReference Column="Expr1077" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="Recr1054" />
+                        <ColumnReference Column="Union1010" />
+                        <ColumnReference Column="Union1032" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="Recr1055" />
+                        <ColumnReference Column="Union1011" />
+                        <ColumnReference Column="Union1033" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="Recr1056" />
+                        <ColumnReference Column="Expr1020" />
+                        <ColumnReference Column="Expr1052" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="Recr1057" />
+                        <ColumnReference Column="Union1012" />
+                        <ColumnReference Column="Union1034" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="Recr1058" />
+                        <ColumnReference Column="Union1013" />
+                        <ColumnReference Column="Union1035" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="Recr1059" />
+                        <ColumnReference Column="Union1014" />
+                        <ColumnReference Column="Union1036" />
+                      </DefinedValue>
+                      <DefinedValue>
+                        <ColumnReference Column="Recr1060" />
+                        <ColumnReference Column="Expr1021" />
+                        <ColumnReference Column="Expr1053" />
+                      </DefinedValue>
+                    </DefinedValues>
+                    <RelOp AvgRowSize="4309" EstimateCPU="3.20171E-07" EstimateIO="0" EstimateRebinds="32.0171" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="2" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="3.20171E-07">
+                      <OutputList>
+                        <ColumnReference Column="Expr1075" />
+                        <ColumnReference Column="Union1010" />
+                        <ColumnReference Column="Union1011" />
+                        <ColumnReference Column="Expr1020" />
+                        <ColumnReference Column="Union1012" />
+                        <ColumnReference Column="Union1013" />
+                        <ColumnReference Column="Union1014" />
+                        <ColumnReference Column="Expr1021" />
+                      </OutputList>
+                      <ComputeScalar>
+                        <DefinedValues>
+                          <DefinedValue>
+                            <ColumnReference Column="Expr1075" />
+                            <ScalarOperator ScalarString="(0)">
+                              <Const ConstValue="(0)" />
+                            </ScalarOperator>
+                          </DefinedValue>
+                        </DefinedValues>
+                        <RelOp AvgRowSize="4317" EstimateCPU="3.10171E-06" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="31.0171" LogicalOp="Compute Scalar" NodeId="3" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="151.209">
+                          <OutputList>
+                            <ColumnReference Column="Union1010" />
+                            <ColumnReference Column="Union1011" />
+                            <ColumnReference Column="Union1012" />
+                            <ColumnReference Column="Union1013" />
+                            <ColumnReference Column="Union1014" />
+                            <ColumnReference Column="Expr1020" />
+                            <ColumnReference Column="Expr1021" />
+                          </OutputList>
+                          <ComputeScalar>
+                            <DefinedValues>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1020" />
+                                <ScalarOperator ScalarString="CONVERT(nvarchar(max),'\',0)">
+                                  <Identifier>
+                                    <ColumnReference Column="ConstExpr1062">
+                                      <ScalarOperator>
+                                        <Convert DataType="nvarchar(max)" Length="2147483647" Style="0" Implicit="false">
+                                          <ScalarOperator>
+                                            <Const ConstValue="'\'" />
+                                          </ScalarOperator>
+                                        </Convert>
+                                      </ScalarOperator>
+                                    </ColumnReference>
+                                  </Identifier>
+                                </ScalarOperator>
+                              </DefinedValue>
+                              <DefinedValue>
+                                <ColumnReference Column="Expr1021" />
+                                <ScalarOperator ScalarString="(0)">
+                                  <Const ConstValue="(0)" />
+                                </ScalarOperator>
+                              </DefinedValue>
+                            </DefinedValues>
+                            <RelOp AvgRowSize="287" EstimateCPU="3.10171E-06" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="31.0171" LogicalOp="Concatenation" NodeId="4" Parallel="false" PhysicalOp="Concatenation" EstimatedTotalSubtreeCost="151.209">
+                              <OutputList>
+                                <ColumnReference Column="Union1010" />
+                                <ColumnReference Column="Union1011" />
+                                <ColumnReference Column="Union1012" />
+                                <ColumnReference Column="Union1013" />
+                                <ColumnReference Column="Union1014" />
+                              </OutputList>
+                              <RunTimeInformation>
+                                <RunTimeCountersPerThread Thread="0" ActualRows="1" ActualEndOfScans="1" ActualExecutions="1" />
+                              </RunTimeInformation>
+                              <Concat>
+                                <DefinedValues>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Union1010" />
+                                    <ColumnReference Column="Expr1003" />
+                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Union1011" />
+                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="StructureId" />
+                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Union1012" />
+                                    <ColumnReference Column="Expr1004" />
+                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Union1013" />
+                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Name" />
+                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Union1014" />
+                                    <ColumnReference Column="Expr1005" />
+                                    <ColumnReference Column="Expr1009" />
+                                  </DefinedValue>
+                                </DefinedValues>
+                                <RelOp AvgRowSize="33" EstimateCPU="1E-07" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="5" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="151.18">
+                                  <OutputList>
+                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="StructureId" />
+                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Name" />
+                                    <ColumnReference Column="Expr1003" />
+                                    <ColumnReference Column="Expr1004" />
+                                    <ColumnReference Column="Expr1005" />
+                                  </OutputList>
+                                  <ComputeScalar>
+                                    <DefinedValues>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1003" />
+                                        <ScalarOperator ScalarString="CONVERT_IMPLICIT(bigint,[DB-7].[dbo].[Tree].[DirId],0)">
+                                          <Convert DataType="bigint" Style="0" Implicit="true">
+                                            <ScalarOperator>
+                                              <Identifier>
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="DirId" />
+                                              </Identifier>
+                                            </ScalarOperator>
+                                          </Convert>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1004" />
+                                        <ScalarOperator ScalarString="CONVERT_IMPLICIT(bigint,[DB-7].[dbo].[Tree].[parentId],0)">
+                                          <Convert DataType="bigint" Style="0" Implicit="true">
+                                            <ScalarOperator>
+                                              <Identifier>
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="parentId" />
+                                              </Identifier>
+                                            </ScalarOperator>
+                                          </Convert>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1005" />
+                                        <ScalarOperator ScalarString="CASE WHEN [DB-7].[dbo].[Tree].[Active]=(2) OR [DB-7].[dbo].[Tree].[Active]=(1) THEN (1) ELSE (0) END">
+                                          <IF>
+                                            <Condition>
+                                              <ScalarOperator>
+                                                <Logical Operation="OR">
+                                                  <ScalarOperator>
+                                                    <Compare CompareOp="EQ">
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Active" />
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Const ConstValue="(2)" />
+                                                      </ScalarOperator>
+                                                    </Compare>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Compare CompareOp="EQ">
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Active" />
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Const ConstValue="(1)" />
+                                                      </ScalarOperator>
+                                                    </Compare>
+                                                  </ScalarOperator>
+                                                </Logical>
+                                              </ScalarOperator>
+                                            </Condition>
+                                            <Then>
+                                              <ScalarOperator>
+                                                <Const ConstValue="(1)" />
+                                              </ScalarOperator>
+                                            </Then>
+                                            <Else>
+                                              <ScalarOperator>
+                                                <Const ConstValue="(0)" />
+                                              </ScalarOperator>
+                                            </Else>
+                                          </IF>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                    </DefinedValues>
+                                    <RelOp AvgRowSize="25" EstimateCPU="0.0001581" EstimateIO="151.179" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Clustered Index Seek" NodeId="6" Parallel="false" PhysicalOp="Clustered Index Seek" EstimatedTotalSubtreeCost="151.18" TableCardinality="0">
+                                      <OutputList>
+                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="DirId" />
+                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="StructureId" />
+                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="parentId" />
+                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Name" />
+                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Active" />
+                                      </OutputList>
+                                      <RunTimeInformation>
+                                        <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="1" ActualExecutions="1" />
+                                      </RunTimeInformation>
+                                      <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" ForceScan="false" NoExpandHint="false" Storage="RowStore">
+                                        <DefinedValues>
+                                          <DefinedValue>
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="DirId" />
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="StructureId" />
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="parentId" />
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Name" />
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Active" />
+                                          </DefinedValue>
+                                        </DefinedValues>
+                                        <Object Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Index="[PK_Tree]" TableReferenceId="1" IndexKind="Clustered" />
+                                        <SeekPredicates>
+                                          <SeekPredicateNew>
+                                            <SeekKeys>
+                                              <Prefix ScanType="EQ">
+                                                <RangeColumns>
+                                                  <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="StructureId" />
+                                                </RangeColumns>
+                                                <RangeExpressions>
+                                                  <ScalarOperator ScalarString="[@StructureId]">
+                                                    <Identifier>
+                                                      <ColumnReference Column="@StructureId" />
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                </RangeExpressions>
+                                              </Prefix>
+                                            </SeekKeys>
+                                          </SeekPredicateNew>
+                                        </SeekPredicates>
+                                        <Predicate>
+                                          <ScalarOperator ScalarString="[DB-7].[dbo].[Tree].[Active]&lt;(10) AND ([@parentId] IS NULL AND CONVERT_IMPLICIT(bigint,[DB-7].[dbo].[Tree].[parentId],0) IS NULL OR CONVERT_IMPLICIT(bigint,[DB-7].[dbo].[Tree].[DirId],0)=[@MainId])">
+                                            <Logical Operation="AND">
+                                              <ScalarOperator>
+                                                <Compare CompareOp="LT">
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Active" />
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Const ConstValue="(10)" />
+                                                  </ScalarOperator>
+                                                </Compare>
+                                              </ScalarOperator>
+                                              <ScalarOperator>
+                                                <Logical Operation="OR">
+                                                  <ScalarOperator>
+                                                    <Logical Operation="AND">
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Column="ConstExpr1061">
+                                                            <ScalarOperator>
+                                                              <Compare CompareOp="IS">
+                                                                <ScalarOperator>
+                                                                  <Identifier>
+                                                                    <ColumnReference Column="@parentId" />
+                                                                  </Identifier>
+                                                                </ScalarOperator>
+                                                                <ScalarOperator>
+                                                                  <Const ConstValue="NULL" />
+                                                                </ScalarOperator>
+                                                              </Compare>
+                                                            </ScalarOperator>
+                                                          </ColumnReference>
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Compare CompareOp="IS">
+                                                          <ScalarOperator>
+                                                            <Convert DataType="bigint" Style="0" Implicit="true">
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="parentId" />
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                            </Convert>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Const ConstValue="NULL" />
+                                                          </ScalarOperator>
+                                                        </Compare>
+                                                      </ScalarOperator>
+                                                    </Logical>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Compare CompareOp="EQ">
+                                                      <ScalarOperator>
+                                                        <Convert DataType="bigint" Style="0" Implicit="true">
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="DirId" />
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                        </Convert>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Column="@MainId" />
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                    </Compare>
+                                                  </ScalarOperator>
+                                                </Logical>
+                                              </ScalarOperator>
+                                            </Logical>
+                                          </ScalarOperator>
+                                        </Predicate>
+                                      </IndexScan>
+                                    </RelOp>
+                                  </ComputeScalar>
+                                </RelOp>
+                                <RelOp AvgRowSize="56" EstimateCPU="3.00171E-06" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="30.0171" LogicalOp="Compute Scalar" NodeId="14" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="0.029102">
+                                  <OutputList>
+                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                    <ColumnReference Column="Expr1009" />
+                                  </OutputList>
+                                  <ComputeScalar>
+                                    <DefinedValues>
+                                      <DefinedValue>
+                                        <ColumnReference Column="Expr1009" />
+                                        <ScalarOperator ScalarString="CASE WHEN [DB-7].[dbo].[Tree_BigInt].[Active]=(2) OR [DB-7].[dbo].[Tree_BigInt].[Active]=(1) THEN (1) ELSE (0) END">
+                                          <IF>
+                                            <Condition>
+                                              <ScalarOperator>
+                                                <Logical Operation="OR">
+                                                  <ScalarOperator>
+                                                    <Compare CompareOp="EQ">
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Const ConstValue="(2)" />
+                                                      </ScalarOperator>
+                                                    </Compare>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Compare CompareOp="EQ">
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Const ConstValue="(1)" />
+                                                      </ScalarOperator>
+                                                    </Compare>
+                                                  </ScalarOperator>
+                                                </Logical>
+                                              </ScalarOperator>
+                                            </Condition>
+                                            <Then>
+                                              <ScalarOperator>
+                                                <Const ConstValue="(1)" />
+                                              </ScalarOperator>
+                                            </Then>
+                                            <Else>
+                                              <ScalarOperator>
+                                                <Const ConstValue="(0)" />
+                                              </ScalarOperator>
+                                            </Else>
+                                          </IF>
+                                        </ScalarOperator>
+                                      </DefinedValue>
+                                    </DefinedValues>
+                                    <RelOp AvgRowSize="56" EstimateCPU="0.00268983" EstimateIO="0.0112613" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="30.0171" LogicalOp="Distinct Sort" NodeId="15" Parallel="false" PhysicalOp="Sort" EstimatedTotalSubtreeCost="0.029099">
+                                      <OutputList>
+                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                      </OutputList>
+                                      <MemoryFractions Input="1" Output="1" />
+                                      <RunTimeInformation>
+                                        <RunTimeCountersPerThread Thread="0" ActualRebinds="1" ActualRewinds="0" ActualRows="1" ActualEndOfScans="1" ActualExecutions="1" />
+                                      </RunTimeInformation>
+                                      <Sort Distinct="true">
+                                        <OrderBy>
+                                          <OrderByColumn Ascending="true">
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                          </OrderByColumn>
+                                        </OrderBy>
+                                        <RelOp AvgRowSize="56" EstimateCPU="2.14375E-05" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="214.375" LogicalOp="Concatenation" NodeId="16" Parallel="false" PhysicalOp="Concatenation" EstimatedTotalSubtreeCost="0.0151479">
+                                          <OutputList>
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                          </OutputList>
+                                          <RunTimeInformation>
+                                            <RunTimeCountersPerThread Thread="0" ActualRows="2" ActualEndOfScans="1" ActualExecutions="1" />
+                                          </RunTimeInformation>
+                                          <Concat>
+                                            <DefinedValues>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                              </DefinedValue>
+                                              <DefinedValue>
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                              </DefinedValue>
+                                            </DefinedValues>
+                                            <RelOp AvgRowSize="56" EstimateCPU="0.00019915" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="213.375" LogicalOp="Filter" NodeId="17" Parallel="false" PhysicalOp="Filter" EstimatedTotalSubtreeCost="0.0118429">
+                                              <OutputList>
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                              </OutputList>
+                                              <RunTimeInformation>
+                                                <RunTimeCountersPerThread Thread="0" ActualRebinds="1" ActualRewinds="0" ActualRows="1" ActualEndOfScans="1" ActualExecutions="1" />
+                                              </RunTimeInformation>
+                                              <Filter StartupExpression="true">
+                                                <RelOp AvgRowSize="56" EstimateCPU="0.000939373" EstimateIO="0.0107044" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="711.249" LogicalOp="Index Seek" NodeId="18" Parallel="false" PhysicalOp="Index Seek" EstimatedTotalSubtreeCost="0.0116437" TableCardinality="92036300">
+                                                  <OutputList>
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                                  </OutputList>
+                                                  <RunTimeInformation>
+                                                    <RunTimeCountersPerThread Thread="0" ActualRows="1" ActualEndOfScans="1" ActualExecutions="1" />
+                                                  </RunTimeInformation>
+                                                  <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" ForceScan="false" NoExpandHint="false" Storage="RowStore">
+                                                    <DefinedValues>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                                      </DefinedValue>
+                                                    </DefinedValues>
+                                                    <Object Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Index="[IX_Tree_StructureId_parentId_Active_Name_DirNameDataLength_BigInt]" TableReferenceId="1" IndexKind="NonClustered" />
+                                                    <SeekPredicates>
+                                                      <SeekPredicateNew>
+                                                        <SeekKeys>
+                                                          <Prefix ScanType="EQ">
+                                                            <RangeColumns>
+                                                              <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                                              <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                                            </RangeColumns>
+                                                            <RangeExpressions>
+                                                              <ScalarOperator ScalarString="[@StructureId]">
+                                                                <Identifier>
+                                                                  <ColumnReference Column="@StructureId" />
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator ScalarString="NULL">
+                                                                <Const ConstValue="NULL" />
+                                                              </ScalarOperator>
+                                                            </RangeExpressions>
+                                                          </Prefix>
+                                                          <EndRange ScanType="LT">
+                                                            <RangeColumns>
+                                                              <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                            </RangeColumns>
+                                                            <RangeExpressions>
+                                                              <ScalarOperator ScalarString="(10)">
+                                                                <Const ConstValue="(10)" />
+                                                              </ScalarOperator>
+                                                            </RangeExpressions>
+                                                          </EndRange>
+                                                        </SeekKeys>
+                                                      </SeekPredicateNew>
+                                                    </SeekPredicates>
+                                                  </IndexScan>
+                                                </RelOp>
+                                                <Predicate>
+                                                  <ScalarOperator ScalarString="[@parentId] IS NULL">
+                                                    <Identifier>
+                                                      <ColumnReference Column="ConstExpr1061">
+                                                        <ScalarOperator>
+                                                          <Compare CompareOp="IS">
+                                                            <ScalarOperator>
+                                                              <Identifier>
+                                                                <ColumnReference Column="@parentId" />
+                                                              </Identifier>
+                                                            </ScalarOperator>
+                                                            <ScalarOperator>
+                                                              <Const ConstValue="NULL" />
+                                                            </ScalarOperator>
+                                                          </Compare>
+                                                        </ScalarOperator>
+                                                      </ColumnReference>
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                </Predicate>
+                                              </Filter>
+                                            </RelOp>
+                                            <RelOp AvgRowSize="56" EstimateCPU="0.0001581" EstimateIO="0.003125" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Clustered Index Seek" NodeId="20" Parallel="false" PhysicalOp="Clustered Index Seek" EstimatedTotalSubtreeCost="0.0032831" TableCardinality="92036300">
+                                              <OutputList>
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                              </OutputList>
+                                              <RunTimeInformation>
+                                                <RunTimeCountersPerThread Thread="0" ActualRows="1" ActualEndOfScans="1" ActualExecutions="1" />
+                                              </RunTimeInformation>
+                                              <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" ForceScan="false" NoExpandHint="false" Storage="RowStore">
+                                                <DefinedValues>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                                  </DefinedValue>
+                                                </DefinedValues>
+                                                <Object Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Index="[PK_Tree_BigInt]" TableReferenceId="1" IndexKind="Clustered" />
+                                                <SeekPredicates>
+                                                  <SeekPredicateNew>
+                                                    <SeekKeys>
+                                                      <Prefix ScanType="EQ">
+                                                        <RangeColumns>
+                                                          <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                                          <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                                        </RangeColumns>
+                                                        <RangeExpressions>
+                                                          <ScalarOperator ScalarString="[@StructureId]">
+                                                            <Identifier>
+                                                              <ColumnReference Column="@StructureId" />
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator ScalarString="[@MainId]">
+                                                            <Identifier>
+                                                              <ColumnReference Column="@MainId" />
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                        </RangeExpressions>
+                                                      </Prefix>
+                                                    </SeekKeys>
+                                                  </SeekPredicateNew>
+                                                </SeekPredicates>
+                                                <Predicate>
+                                                  <ScalarOperator ScalarString="[DB-7].[dbo].[Tree_BigInt].[Active]&lt;(10)">
+                                                    <Compare CompareOp="LT">
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Const ConstValue="(10)" />
+                                                      </ScalarOperator>
+                                                    </Compare>
+                                                  </ScalarOperator>
+                                                </Predicate>
+                                              </IndexScan>
+                                            </RelOp>
+                                          </Concat>
+                                        </RelOp>
+                                      </Sort>
+                                    </RelOp>
+                                  </ComputeScalar>
+                                </RelOp>
+                              </Concat>
+                            </RelOp>
+                          </ComputeScalar>
+                        </RelOp>
+                      </ComputeScalar>
+                    </RelOp>
+                    <RelOp AvgRowSize="4309" EstimateCPU="2.68944E-06" EstimateIO="0" EstimateRebinds="32.0171" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1.03224" LogicalOp="Assert" NodeId="32" Parallel="false" PhysicalOp="Assert" EstimatedTotalSubtreeCost="151.577">
+                      <OutputList>
+                        <ColumnReference Column="Expr1077" />
+                        <ColumnReference Column="Union1032" />
+                        <ColumnReference Column="Union1033" />
+                        <ColumnReference Column="Expr1052" />
+                        <ColumnReference Column="Union1034" />
+                        <ColumnReference Column="Union1035" />
+                        <ColumnReference Column="Union1036" />
+                        <ColumnReference Column="Expr1053" />
+                      </OutputList>
+                      <RunTimeInformation>
+                        <RunTimeCountersPerThread Thread="0" ActualRows="2" ActualEndOfScans="1" ActualExecutions="1" />
+                      </RunTimeInformation>
+                      <Assert StartupExpression="false">
+                        <RelOp AvgRowSize="4309" EstimateCPU="2.68944E-06" EstimateIO="0" EstimateRebinds="32.0171" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1.03224" LogicalOp="Inner Join" NodeId="33" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="151.577">
+                          <OutputList>
+                            <ColumnReference Column="Expr1077" />
+                            <ColumnReference Column="Union1032" />
+                            <ColumnReference Column="Union1033" />
+                            <ColumnReference Column="Expr1052" />
+                            <ColumnReference Column="Union1034" />
+                            <ColumnReference Column="Union1035" />
+                            <ColumnReference Column="Union1036" />
+                            <ColumnReference Column="Expr1053" />
+                          </OutputList>
+                          <RunTimeInformation>
+                            <RunTimeCountersPerThread Thread="0" ActualRows="2" ActualEndOfScans="1" ActualExecutions="1" />
+                          </RunTimeInformation>
+                          <NestedLoops Optimized="false">
+                            <OuterReferences>
+                              <ColumnReference Column="Expr1077" />
+                              <ColumnReference Column="Recr1042" />
+                              <ColumnReference Column="Recr1043" />
+                              <ColumnReference Column="Recr1044" />
+                              <ColumnReference Column="Recr1045" />
+                              <ColumnReference Column="Recr1046" />
+                              <ColumnReference Column="Recr1047" />
+                              <ColumnReference Column="Recr1048" />
+                            </OuterReferences>
+                            <RelOp AvgRowSize="4309" EstimateCPU="3.20171E-07" EstimateIO="0" EstimateRebinds="32.0171" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="34" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="3.20171E-07">
+                              <OutputList>
+                                <ColumnReference Column="Expr1077" />
+                                <ColumnReference Column="Recr1042" />
+                                <ColumnReference Column="Recr1043" />
+                                <ColumnReference Column="Recr1044" />
+                                <ColumnReference Column="Recr1045" />
+                                <ColumnReference Column="Recr1046" />
+                                <ColumnReference Column="Recr1047" />
+                                <ColumnReference Column="Recr1048" />
+                              </OutputList>
+                              <ComputeScalar>
+                                <DefinedValues>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Expr1077" />
+                                    <ScalarOperator ScalarString="[Expr1076]+(1)">
+                                      <Arithmetic Operation="ADD">
+                                        <ScalarOperator>
+                                          <Identifier>
+                                            <ColumnReference Column="Expr1076" />
+                                          </Identifier>
+                                        </ScalarOperator>
+                                        <ScalarOperator>
+                                          <Const ConstValue="(1)" />
+                                        </ScalarOperator>
+                                      </Arithmetic>
+                                    </ScalarOperator>
+                                  </DefinedValue>
+                                </DefinedValues>
+                                <RelOp AvgRowSize="4309" EstimateCPU="3.20171E-07" EstimateIO="0" EstimateRebinds="32.0171" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Lazy Spool" NodeId="35" Parallel="false" PhysicalOp="Table Spool" EstimatedTotalSubtreeCost="3.20171E-07">
+                                  <OutputList>
+                                    <ColumnReference Column="Expr1076" />
+                                    <ColumnReference Column="Recr1042" />
+                                    <ColumnReference Column="Recr1043" />
+                                    <ColumnReference Column="Recr1044" />
+                                    <ColumnReference Column="Recr1045" />
+                                    <ColumnReference Column="Recr1046" />
+                                    <ColumnReference Column="Recr1047" />
+                                    <ColumnReference Column="Recr1048" />
+                                  </OutputList>
+                                  <RunTimeInformation>
+                                    <RunTimeCountersPerThread Thread="0" ActualRebinds="1" ActualRewinds="0" ActualRows="3" ActualEndOfScans="1" ActualExecutions="1" />
+                                  </RunTimeInformation>
+                                  <Spool Stack="true" PrimaryNodeId="0" />
+                                </RelOp>
+                              </ComputeScalar>
+                            </RelOp>
+                            <RelOp AvgRowSize="4317" EstimateCPU="1E-07" EstimateIO="0" EstimateRebinds="31.0171" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="39" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="151.577">
+                              <OutputList>
+                                <ColumnReference Column="Union1032" />
+                                <ColumnReference Column="Union1033" />
+                                <ColumnReference Column="Union1034" />
+                                <ColumnReference Column="Union1035" />
+                                <ColumnReference Column="Union1036" />
+                                <ColumnReference Column="Expr1052" />
+                                <ColumnReference Column="Expr1053" />
+                              </OutputList>
+                              <ComputeScalar>
+                                <DefinedValues>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Expr1052" />
+                                    <ScalarOperator ScalarString="[Recr1044]+[Union1035]+N'\'">
+                                      <Arithmetic Operation="ADD">
+                                        <ScalarOperator>
+                                          <Arithmetic Operation="ADD">
+                                            <ScalarOperator>
+                                              <Identifier>
+                                                <ColumnReference Column="Recr1044" />
+                                              </Identifier>
+                                            </ScalarOperator>
+                                            <ScalarOperator>
+                                              <Identifier>
+                                                <ColumnReference Column="Union1035" />
+                                              </Identifier>
+                                            </ScalarOperator>
+                                          </Arithmetic>
+                                        </ScalarOperator>
+                                        <ScalarOperator>
+                                          <Const ConstValue="N'\'" />
+                                        </ScalarOperator>
+                                      </Arithmetic>
+                                    </ScalarOperator>
+                                  </DefinedValue>
+                                  <DefinedValue>
+                                    <ColumnReference Column="Expr1053" />
+                                    <ScalarOperator ScalarString="[Recr1048]+(1)">
+                                      <Arithmetic Operation="ADD">
+                                        <ScalarOperator>
+                                          <Identifier>
+                                            <ColumnReference Column="Recr1048" />
+                                          </Identifier>
+                                        </ScalarOperator>
+                                        <ScalarOperator>
+                                          <Const ConstValue="(1)" />
+                                        </ScalarOperator>
+                                      </Arithmetic>
+                                    </ScalarOperator>
+                                  </DefinedValue>
+                                </DefinedValues>
+                                <RelOp AvgRowSize="287" EstimateCPU="8.36E-06" EstimateIO="0" EstimateRebinds="31.0171" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Inner Join" NodeId="40" Parallel="false" PhysicalOp="Nested Loops" EstimatedTotalSubtreeCost="151.577">
+                                  <OutputList>
+                                    <ColumnReference Column="Union1032" />
+                                    <ColumnReference Column="Union1033" />
+                                    <ColumnReference Column="Union1034" />
+                                    <ColumnReference Column="Union1035" />
+                                    <ColumnReference Column="Union1036" />
+                                  </OutputList>
+                                  <RunTimeInformation>
+                                    <RunTimeCountersPerThread Thread="0" ActualRows="2" ActualEndOfScans="3" ActualExecutions="3" />
+                                  </RunTimeInformation>
+                                  <NestedLoops Optimized="false">
+                                    <OuterReferences>
+                                      <ColumnReference Table="@Names" Alias="[N]" Column="Name" />
+                                      <ColumnReference Column="Expr1067" />
+                                    </OuterReferences>
+                                    <RelOp AvgRowSize="274" EstimateCPU="1E-07" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="31.0171" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="41" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="0.00575526">
+                                      <OutputList>
+                                        <ColumnReference Table="@Names" Alias="[N]" Column="Name" />
+                                        <ColumnReference Column="Expr1067" />
+                                      </OutputList>
+                                      <ComputeScalar>
+                                        <DefinedValues>
+                                          <DefinedValue>
+                                            <ColumnReference Column="Expr1067" />
+                                            <ScalarOperator ScalarString="datalength(@Names.[Name] as [N].[Name])">
+                                              <Intrinsic FunctionName="datalength">
+                                                <ScalarOperator>
+                                                  <Identifier>
+                                                    <ColumnReference Table="@Names" Alias="[N]" Column="Name" />
+                                                  </Identifier>
+                                                </ScalarOperator>
+                                              </Intrinsic>
+                                            </ScalarOperator>
+                                          </DefinedValue>
+                                        </DefinedValues>
+                                        <RelOp AvgRowSize="270" EstimateCPU="7.96E-05" EstimateIO="0.0032035" EstimateRebinds="0" EstimateRewinds="31.0171" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Table Scan" NodeId="42" Parallel="false" PhysicalOp="Table Scan" EstimatedTotalSubtreeCost="0.00575206" TableCardinality="0">
+                                          <OutputList>
+                                            <ColumnReference Table="@Names" Alias="[N]" Column="Name" />
+                                          </OutputList>
+                                          <RunTimeInformation>
+                                            <RunTimeCountersPerThread Thread="0" ActualRows="3" ActualEndOfScans="3" ActualExecutions="3" />
+                                          </RunTimeInformation>
+                                          <TableScan Ordered="false" ForcedIndex="false" ForceScan="false" NoExpandHint="false">
+                                            <DefinedValues>
+                                              <DefinedValue>
+                                                <ColumnReference Table="@Names" Alias="[N]" Column="Name" />
+                                              </DefinedValue>
+                                            </DefinedValues>
+                                            <Object Table="[@Names]" Alias="[N]" />
+                                            <Predicate>
+                                              <ScalarOperator ScalarString="@Names.[RowId] as [N].[RowId]=([Recr1048]+(1))">
+                                                <Compare CompareOp="EQ">
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Table="@Names" Alias="[N]" Column="RowId" />
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Arithmetic Operation="ADD">
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Column="Recr1048" />
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Const ConstValue="(1)" />
+                                                      </ScalarOperator>
+                                                    </Arithmetic>
+                                                  </ScalarOperator>
+                                                </Compare>
+                                              </ScalarOperator>
+                                            </Predicate>
+                                          </TableScan>
+                                        </RelOp>
+                                      </ComputeScalar>
+                                    </RelOp>
+                                    <RelOp AvgRowSize="287" EstimateCPU="2E-07" EstimateIO="0" EstimateRebinds="31.0171" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="2" LogicalOp="Concatenation" NodeId="46" Parallel="false" PhysicalOp="Concatenation" EstimatedTotalSubtreeCost="151.571">
+                                      <OutputList>
+                                        <ColumnReference Column="Union1032" />
+                                        <ColumnReference Column="Union1033" />
+                                        <ColumnReference Column="Union1034" />
+                                        <ColumnReference Column="Union1035" />
+                                        <ColumnReference Column="Union1036" />
+                                      </OutputList>
+                                      <RunTimeInformation>
+                                        <RunTimeCountersPerThread Thread="0" ActualRows="2" ActualEndOfScans="3" ActualExecutions="3" />
+                                      </RunTimeInformation>
+                                      <Concat>
+                                        <DefinedValues>
+                                          <DefinedValue>
+                                            <ColumnReference Column="Union1032" />
+                                            <ColumnReference Column="Expr1025" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Column="Union1033" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="StructureId" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Column="Union1034" />
+                                            <ColumnReference Column="Expr1026" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Column="Union1035" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Name" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                          </DefinedValue>
+                                          <DefinedValue>
+                                            <ColumnReference Column="Union1036" />
+                                            <ColumnReference Column="Expr1027" />
+                                            <ColumnReference Column="Expr1031" />
+                                          </DefinedValue>
+                                        </DefinedValues>
+                                        <RelOp AvgRowSize="33" EstimateCPU="1.88E-06" EstimateIO="0" EstimateRebinds="31.0171" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Filter" NodeId="47" Parallel="false" PhysicalOp="Filter" EstimatedTotalSubtreeCost="151.182">
+                                          <OutputList>
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="StructureId" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Name" />
+                                            <ColumnReference Column="Expr1025" />
+                                            <ColumnReference Column="Expr1026" />
+                                            <ColumnReference Column="Expr1027" />
+                                          </OutputList>
+                                          <RunTimeInformation>
+                                            <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="3" ActualExecutions="3" />
+                                          </RunTimeInformation>
+                                          <Filter StartupExpression="false">
+                                            <RelOp AvgRowSize="34" EstimateCPU="1E-07" EstimateIO="0" EstimateRebinds="0" EstimateRewinds="31.0171" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="48" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="151.182">
+                                              <OutputList>
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="StructureId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Name" />
+                                                <ColumnReference Column="Expr1025" />
+                                                <ColumnReference Column="Expr1026" />
+                                                <ColumnReference Column="Expr1027" />
+                                              </OutputList>
+                                              <ComputeScalar>
+                                                <DefinedValues>
+                                                  <DefinedValue>
+                                                    <ColumnReference Column="Expr1025" />
+                                                    <ScalarOperator ScalarString="CONVERT_IMPLICIT(bigint,[DB-7].[dbo].[Tree].[DirId],0)">
+                                                      <Convert DataType="bigint" Style="0" Implicit="true">
+                                                        <ScalarOperator>
+                                                          <Identifier>
+                                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="DirId" />
+                                                          </Identifier>
+                                                        </ScalarOperator>
+                                                      </Convert>
+                                                    </ScalarOperator>
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Column="Expr1026" />
+                                                    <ScalarOperator ScalarString="CONVERT_IMPLICIT(bigint,[DB-7].[dbo].[Tree].[parentId],0)">
+                                                      <Convert DataType="bigint" Style="0" Implicit="true">
+                                                        <ScalarOperator>
+                                                          <Identifier>
+                                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="parentId" />
+                                                          </Identifier>
+                                                        </ScalarOperator>
+                                                      </Convert>
+                                                    </ScalarOperator>
+                                                  </DefinedValue>
+                                                  <DefinedValue>
+                                                    <ColumnReference Column="Expr1027" />
+                                                    <ScalarOperator ScalarString="CASE WHEN [DB-7].[dbo].[Tree].[Active]=(2) OR [DB-7].[dbo].[Tree].[Active]=(1) THEN (1) ELSE (0) END">
+                                                      <IF>
+                                                        <Condition>
+                                                          <ScalarOperator>
+                                                            <Logical Operation="OR">
+                                                              <ScalarOperator>
+                                                                <Compare CompareOp="EQ">
+                                                                  <ScalarOperator>
+                                                                    <Identifier>
+                                                                      <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Active" />
+                                                                    </Identifier>
+                                                                  </ScalarOperator>
+                                                                  <ScalarOperator>
+                                                                    <Const ConstValue="(2)" />
+                                                                  </ScalarOperator>
+                                                                </Compare>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Compare CompareOp="EQ">
+                                                                  <ScalarOperator>
+                                                                    <Identifier>
+                                                                      <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Active" />
+                                                                    </Identifier>
+                                                                  </ScalarOperator>
+                                                                  <ScalarOperator>
+                                                                    <Const ConstValue="(1)" />
+                                                                  </ScalarOperator>
+                                                                </Compare>
+                                                              </ScalarOperator>
+                                                            </Logical>
+                                                          </ScalarOperator>
+                                                        </Condition>
+                                                        <Then>
+                                                          <ScalarOperator>
+                                                            <Const ConstValue="(1)" />
+                                                          </ScalarOperator>
+                                                        </Then>
+                                                        <Else>
+                                                          <ScalarOperator>
+                                                            <Const ConstValue="(0)" />
+                                                          </ScalarOperator>
+                                                        </Else>
+                                                      </IF>
+                                                    </ScalarOperator>
+                                                  </DefinedValue>
+                                                </DefinedValues>
+                                                <RelOp AvgRowSize="25" EstimateCPU="7.96E-05" EstimateIO="151.179" EstimateRebinds="0" EstimateRewinds="31.0171" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Clustered Index Scan" NodeId="49" Parallel="false" PhysicalOp="Clustered Index Scan" EstimatedTotalSubtreeCost="151.182" TableCardinality="0">
+                                                  <OutputList>
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="DirId" />
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="StructureId" />
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="parentId" />
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Name" />
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Active" />
+                                                  </OutputList>
+                                                  <RunTimeInformation>
+                                                    <RunTimeCountersPerThread Thread="0" ActualRows="0" ActualEndOfScans="3" ActualExecutions="3" />
+                                                  </RunTimeInformation>
+                                                  <IndexScan Ordered="false" ForcedIndex="false" ForceScan="false" NoExpandHint="false">
+                                                    <DefinedValues>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="DirId" />
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="StructureId" />
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="parentId" />
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Name" />
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Active" />
+                                                      </DefinedValue>
+                                                    </DefinedValues>
+                                                    <Object Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Index="[PK_Tree]" TableReferenceId="2" IndexKind="Clustered" />
+                                                    <Predicate>
+                                                      <ScalarOperator ScalarString="[DB-7].[dbo].[Tree].[StructureId]=[@StructureId] AND [DB-7].[dbo].[Tree].[Active]&lt;(10) AND @Names.[Name] as [N].[Name]=[DB-7].[dbo].[Tree].[Name] AND CONVERT_IMPLICIT(bigint,[DB-7].[dbo].[Tree].[parentId],0)=[Recr1042]">
+                                                        <Logical Operation="AND">
+                                                          <ScalarOperator>
+                                                            <Compare CompareOp="EQ">
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="StructureId" />
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Column="@StructureId" />
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                            </Compare>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Compare CompareOp="LT">
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Active" />
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Const ConstValue="(10)" />
+                                                              </ScalarOperator>
+                                                            </Compare>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Compare CompareOp="EQ">
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Table="@Names" Alias="[N]" Column="Name" />
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Name" />
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                            </Compare>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Compare CompareOp="EQ">
+                                                              <ScalarOperator>
+                                                                <Convert DataType="bigint" Style="0" Implicit="true">
+                                                                  <ScalarOperator>
+                                                                    <Identifier>
+                                                                      <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="parentId" />
+                                                                    </Identifier>
+                                                                  </ScalarOperator>
+                                                                </Convert>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Column="Recr1042" />
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                            </Compare>
+                                                          </ScalarOperator>
+                                                        </Logical>
+                                                      </ScalarOperator>
+                                                    </Predicate>
+                                                  </IndexScan>
+                                                </RelOp>
+                                              </ComputeScalar>
+                                            </RelOp>
+                                            <Predicate>
+                                              <ScalarOperator ScalarString="[Expr1067]=datalength([DB-7].[dbo].[Tree].[Name])">
+                                                <Compare CompareOp="EQ">
+                                                  <ScalarOperator>
+                                                    <Identifier>
+                                                      <ColumnReference Column="Expr1067" />
+                                                    </Identifier>
+                                                  </ScalarOperator>
+                                                  <ScalarOperator>
+                                                    <Intrinsic FunctionName="datalength">
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree]" Column="Name" />
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                    </Intrinsic>
+                                                  </ScalarOperator>
+                                                </Compare>
+                                              </ScalarOperator>
+                                            </Predicate>
+                                          </Filter>
+                                        </RelOp>
+                                        <RelOp AvgRowSize="56" EstimateCPU="1E-07" EstimateIO="0" EstimateRebinds="31.0171" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Compute Scalar" NodeId="58" Parallel="false" PhysicalOp="Compute Scalar" EstimatedTotalSubtreeCost="0.388494">
+                                          <OutputList>
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                            <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                            <ColumnReference Column="Expr1031" />
+                                          </OutputList>
+                                          <ComputeScalar>
+                                            <DefinedValues>
+                                              <DefinedValue>
+                                                <ColumnReference Column="Expr1031" />
+                                                <ScalarOperator ScalarString="CASE WHEN [DB-7].[dbo].[Tree_BigInt].[Active]=(2) OR [DB-7].[dbo].[Tree_BigInt].[Active]=(1) THEN (1) ELSE (0) END">
+                                                  <IF>
+                                                    <Condition>
+                                                      <ScalarOperator>
+                                                        <Logical Operation="OR">
+                                                          <ScalarOperator>
+                                                            <Compare CompareOp="EQ">
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Const ConstValue="(2)" />
+                                                              </ScalarOperator>
+                                                            </Compare>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Compare CompareOp="EQ">
+                                                              <ScalarOperator>
+                                                                <Identifier>
+                                                                  <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator>
+                                                                <Const ConstValue="(1)" />
+                                                              </ScalarOperator>
+                                                            </Compare>
+                                                          </ScalarOperator>
+                                                        </Logical>
+                                                      </ScalarOperator>
+                                                    </Condition>
+                                                    <Then>
+                                                      <ScalarOperator>
+                                                        <Const ConstValue="(1)" />
+                                                      </ScalarOperator>
+                                                    </Then>
+                                                    <Else>
+                                                      <ScalarOperator>
+                                                        <Const ConstValue="(0)" />
+                                                      </ScalarOperator>
+                                                    </Else>
+                                                  </IF>
+                                                </ScalarOperator>
+                                              </DefinedValue>
+                                            </DefinedValues>
+                                            <RelOp AvgRowSize="56" EstimateCPU="0.000697024" EstimateIO="0" EstimateRebinds="31.0171" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Filter" NodeId="59" Parallel="false" PhysicalOp="Filter" EstimatedTotalSubtreeCost="0.388491">
+                                              <OutputList>
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                                <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                              </OutputList>
+                                              <RunTimeInformation>
+                                                <RunTimeCountersPerThread Thread="0" ActualRows="2" ActualEndOfScans="3" ActualExecutions="3" />
+                                              </RunTimeInformation>
+                                              <Filter StartupExpression="false">
+                                                <RelOp AvgRowSize="56" EstimateCPU="0.000939373" EstimateIO="0.0112731" EstimateRebinds="31.0171" EstimateRewinds="0" EstimatedExecutionMode="Row" EstimateRows="1" LogicalOp="Index Seek" NodeId="60" Parallel="false" PhysicalOp="Index Seek" EstimatedTotalSubtreeCost="0.366175" TableCardinality="92036300">
+                                                  <OutputList>
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                                    <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                                  </OutputList>
+                                                  <RunTimeInformation>
+                                                    <RunTimeCountersPerThread Thread="0" ActualRows="2" ActualEndOfScans="3" ActualExecutions="3" />
+                                                  </RunTimeInformation>
+                                                  <IndexScan Ordered="true" ScanDirection="FORWARD" ForcedIndex="false" ForceSeek="false" ForceScan="false" NoExpandHint="false" Storage="RowStore">
+                                                    <DefinedValues>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="DirId" />
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                                      </DefinedValue>
+                                                      <DefinedValue>
+                                                        <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                                      </DefinedValue>
+                                                    </DefinedValues>
+                                                    <Object Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Index="[IX_Tree_StructureId_parentId_Active_Name_DirNameDataLength_BigInt]" TableReferenceId="2" IndexKind="NonClustered" />
+                                                    <SeekPredicates>
+                                                      <SeekPredicateNew>
+                                                        <SeekKeys>
+                                                          <Prefix ScanType="EQ">
+                                                            <RangeColumns>
+                                                              <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="StructureId" />
+                                                              <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="parentId" />
+                                                            </RangeColumns>
+                                                            <RangeExpressions>
+                                                              <ScalarOperator ScalarString="[@StructureId]">
+                                                                <Identifier>
+                                                                  <ColumnReference Column="@StructureId" />
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                              <ScalarOperator ScalarString="[Recr1042]">
+                                                                <Identifier>
+                                                                  <ColumnReference Column="Recr1042" />
+                                                                </Identifier>
+                                                              </ScalarOperator>
+                                                            </RangeExpressions>
+                                                          </Prefix>
+                                                          <EndRange ScanType="LT">
+                                                            <RangeColumns>
+                                                              <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Active" />
+                                                            </RangeColumns>
+                                                            <RangeExpressions>
+                                                              <ScalarOperator ScalarString="(10)">
+                                                                <Const ConstValue="(10)" />
+                                                              </ScalarOperator>
+                                                            </RangeExpressions>
+                                                          </EndRange>
+                                                        </SeekKeys>
+                                                      </SeekPredicateNew>
+                                                    </SeekPredicates>
+                                                    <Predicate>
+                                                      <ScalarOperator ScalarString="@Names.[Name] as [N].[Name]=[DB-7].[dbo].[Tree_BigInt].[Name]">
+                                                        <Compare CompareOp="EQ">
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Table="@Names" Alias="[N]" Column="Name" />
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                        </Compare>
+                                                      </ScalarOperator>
+                                                    </Predicate>
+                                                  </IndexScan>
+                                                </RelOp>
+                                                <Predicate>
+                                                  <ScalarOperator ScalarString="[Expr1067]=datalength([DB-7].[dbo].[Tree_BigInt].[Name])">
+                                                    <Compare CompareOp="EQ">
+                                                      <ScalarOperator>
+                                                        <Identifier>
+                                                          <ColumnReference Column="Expr1067" />
+                                                        </Identifier>
+                                                      </ScalarOperator>
+                                                      <ScalarOperator>
+                                                        <Intrinsic FunctionName="datalength">
+                                                          <ScalarOperator>
+                                                            <Identifier>
+                                                              <ColumnReference Database="[DB-7]" Schema="[dbo]" Table="[Tree_BigInt]" Column="Name" />
+                                                            </Identifier>
+                                                          </ScalarOperator>
+                                                        </Intrinsic>
+                                                      </ScalarOperator>
+                                                    </Compare>
+                                                  </ScalarOperator>
+                                                </Predicate>
+                                              </Filter>
+                                            </RelOp>
+                                          </ComputeScalar>
+                                        </RelOp>
+                                      </Concat>
+                                    </RelOp>
+                                  </NestedLoops>
+                                </RelOp>
+                              </ComputeScalar>
+                            </RelOp>
+                          </NestedLoops>
+                        </RelOp>
+                        <Predicate>
+                          <ScalarOperator ScalarString="CASE WHEN [Expr1077]&gt;(100) THEN (0) ELSE NULL END">
+                            <IF>
+                              <Condition>
+                                <ScalarOperator>
+                                  <Compare CompareOp="GT">
+                                    <ScalarOperator>
+                                      <Identifier>
+                                        <ColumnReference Column="Expr1077" />
+                                      </Identifier>
+                                    </ScalarOperator>
+                                    <ScalarOperator>
+                                      <Const ConstValue="(100)" />
+                                    </ScalarOperator>
+                                  </Compare>
+                                </ScalarOperator>
+                              </Condition>
+                              <Then>
+                                <ScalarOperator>
+                                  <Const ConstValue="(0)" />
+                                </ScalarOperator>
+                              </Then>
+                              <Else>
+                                <ScalarOperator>
+                                  <Const ConstValue="NULL" />
+                                </ScalarOperator>
+                              </Else>
+                            </IF>
+                          </ScalarOperator>
+                        </Predicate>
+                      </Assert>
+                    </RelOp>
+                  </Concat>
+                </RelOp>
+              </Spool>
+            </RelOp>
+            <ParameterList>
+              <ColumnReference Column="@StructureSubId" ParameterCompiledValue="(6029387)" ParameterRuntimeValue="(6029387)" />
+              <ColumnReference Column="@MainId" ParameterRuntimeValue="(126192021)" />
+              <ColumnReference Column="@parentId" ParameterRuntimeValue="NULL" />
+              <ColumnReference Column="@StructureId" ParameterRuntimeValue="(6029387)" />
+            </ParameterList>
+          </QueryPlan>
+        </StmtSimple>
+      </Statements>
+    </Batch>
+  </BatchSequence>
+</ShowPlanXML>
